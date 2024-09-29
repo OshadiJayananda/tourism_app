@@ -41,27 +41,27 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.shop,
+              Icons.calculate_rounded,
             ),
-            label: "Shopping",
+            label: "Calculator",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
+              Icons.volunteer_activism,
             ),
             label: "Volunteering",
           ),
            BottomNavigationBarItem(
             icon: Icon(
-              Icons.volunteer_activism,
+              Icons.shop,
             ),
-            label: "Settings",
+            label: "Shop",
           ),
            BottomNavigationBarItem(
             icon: Icon(
-              Icons.settings,
+              Icons.person,
             ),
-            label: "Settings",
+            label: "Profile",
           ),
         ],
       ),
