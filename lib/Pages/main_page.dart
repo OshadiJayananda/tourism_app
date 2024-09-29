@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:tourism_app/Pages/carbonCal_page.dart';
 import 'package:tourism_app/Pages/home_page.dart';
+import 'package:tourism_app/Pages/profile_page.dart';
+import 'package:tourism_app/Pages/stores_page.dart';
 import 'package:tourism_app/Pages/tVolunteer_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -13,7 +16,10 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final List<Widget> pages = [
     const HomePage(),
-    const TvolunteerPage()
+    const CarboncalPage(),
+    const TvolunteerPage(),
+    const StoresPage(),
+    const ProfilePage()
   
   ];
 
