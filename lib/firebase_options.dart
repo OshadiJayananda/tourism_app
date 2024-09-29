@@ -54,6 +54,8 @@ class DefaultFirebaseOptions {
     authDomain: 'tourismapp-e188e.firebaseapp.com',
     storageBucket: 'tourismapp-e188e.appspot.com',
     measurementId: 'G-P3T35NMVEF',
+    databaseURL: 'https://tourismapp-e188e-default-rtdb.firebaseio.com/', 
+
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -62,7 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '21712256481',
     projectId: 'tourismapp-e188e',
     storageBucket: 'tourismapp-e188e.appspot.com',
-  );
+    databaseURL: 'https://tourismapp-e188e-default-rtdb.firebaseio.com/', 
+   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBYnj9LZx12taE3_RqBcKl9sNuq_NJ39M8',
