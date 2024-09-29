@@ -25,3 +25,12 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# Ignore generated plugin registrant files
+linux/flutter/generated_plugin_registrant.*
+windows/flutter/generated_plugin_registrant.*
+macos/Flutter/GeneratedPluginRegistrant.swift
+
+# Ignore generated CMake files
+linux/flutter/generated_plugins.cmake
+windows/flutter/generated_plugins.cmake
