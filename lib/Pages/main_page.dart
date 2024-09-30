@@ -4,7 +4,7 @@ import 'package:tourism_app/Pages/carbon_screen1.dart';
 import 'package:tourism_app/Pages/home_page.dart';
 import 'package:tourism_app/Pages/profile_page.dart';
 import 'package:tourism_app/Pages/stores_page.dart';
-import 'package:tourism_app/Pages/tVolunteer_page.dart';
+import 'package:tourism_app/Pages/volunteer_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> pages = [
     const HomePage(),
     CarbonFootprintCalculator(),
-    const TvolunteerPage(),
+    const VolunteerPage(),
     const StoresPage(),
     const ProfilePage()
   
