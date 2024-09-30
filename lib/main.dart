@@ -7,12 +7,27 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
+  await initializeFirebase();
   runApp(const MyApp());
+}
+
+bool _isFirebaseInitialized = false;
+
+Future<void> initializeFirebase() async {
+  if (!_isFirebaseInitialized) {
+    try {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      _isFirebaseInitialized =
+          true; // Set the flag to true after initialization
+      print("Firebase initialized successfully.");
+    } catch (e) {
+      print("Error initializing Firebase: $e");
+    }
+  } else {
+    print("Firebase is already initialized.");
+  }
 }
 
 class MyApp extends StatefulWidget {
