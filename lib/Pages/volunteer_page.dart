@@ -67,7 +67,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(40)),
               ),
-              child: const Padding(
+              child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Column(
                   children: [
