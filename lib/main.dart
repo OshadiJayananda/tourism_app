@@ -8,10 +8,6 @@ import 'package:tourism_app/Pages/onboarding_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeFirebase();
-  runApp(const MyApp());
-}
-
 
   // Correct Firebase initialization for web
   if (kIsWeb) {
@@ -31,22 +27,7 @@ void main() async {
     await Firebase.initializeApp();
   }
 
-
-Future<void> initializeFirebase() async {
-  if (!_isFirebaseInitialized) {
-    try {
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
-      _isFirebaseInitialized =
-          true; // Set the flag to true after initialization
-      print("Firebase initialized successfully.");
-    } catch (e) {
-      print("Error initializing Firebase: $e");
-    }
-  } else {
-    print("Firebase is already initialized.");
-  }
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {

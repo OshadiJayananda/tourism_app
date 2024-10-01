@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'opportunity_page.dart'; // Import the OpportunityPage
 
 class BeachVolunteeringPage extends StatelessWidget {
   const BeachVolunteeringPage({super.key});
@@ -33,7 +34,7 @@ class BeachVolunteeringPage extends StatelessWidget {
 
               // Beach image
               Image.asset(
-                'assets/images/beach_cleanup.jpeg',
+                'assets/images/beach_volunteering.jpeg',
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 20),
@@ -67,6 +68,33 @@ class BeachVolunteeringPage extends StatelessWidget {
                     subtitle: Text('Educate beachgoers on the importance of conservation.'),
                   ),
                 ],
+              ),
+
+              const SizedBox(height: 20),
+
+              // See all available opportunities button
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Navigate to the OpportunityPage
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const OpportunityPage(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  child: const Text(
+                    'See All Available Opportunities',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
               ),
             ],
           ),
