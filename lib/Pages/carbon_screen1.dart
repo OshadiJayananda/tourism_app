@@ -29,7 +29,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
     // Add more distances between locations here
   };
 
-  final dbRef = FirebaseDatabase.instance.ref(); // Reference to Firebase Realtime Database
+  final DatabaseReference dbRef = FirebaseDatabase.instance.ref(); // Reference to Firebase Realtime Database
 
   @override
   Widget build(BuildContext context) {
