@@ -36,16 +36,12 @@ dependencies:
   cupertino_icons: ^1.0.8
   firebase_core: ^3.6.0
   firebase_database: ^11.1.4
-  geolocator: ^8.2.0
+  # geolocator: ^8.2.0
   shared_preferences: ^2.0.11
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
-
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -66,7 +62,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-
     - assets/images/
     - assets/images/logo_onboarding.png
     - assets/images/logo.png

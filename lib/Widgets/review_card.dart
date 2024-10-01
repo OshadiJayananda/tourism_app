@@ -22,7 +22,10 @@ class ReviewCard extends StatelessWidget {
         elevation: 4,
         child: ListTile(
           leading: CircleAvatar(
-            backgroundImage: NetworkImage(imageUrl), // Load user's image
+            backgroundImage: imageUrl.startsWith('http')
+                ? NetworkImage(imageUrl) // Load user's image from network
+                : AssetImage(imageUrl)
+                    as ImageProvider, // Load user's image from assets
           ),
           title: Text(name),
           subtitle: Column(

@@ -34,7 +34,7 @@ class _VolunteerPageState extends State<VolunteerPage> {
                 color: Colors.teal,
                 borderRadius: BorderRadius.vertical(bottom: Radius.circular(40)),
               ),
-              child: Padding(
+              child: const Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
