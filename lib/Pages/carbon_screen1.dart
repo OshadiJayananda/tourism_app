@@ -6,12 +6,38 @@ class CarbonResults extends StatelessWidget {
   final String dropOffLocation;
   final String travelMode;
 
+
   CarbonResults({
     required this.emissions,
     required this.pickupLocation,
     required this.dropOffLocation,
     required this.travelMode,
   });
+
+class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
+  final _formKey = GlobalKey<FormState>();
+  String? pickupLocation;
+  String? dropOffLocation;
+  String? travelMode;
+  double distance = 0.0; // Distance in kilometers
+  final List<String> locations = [
+    'Ampara', 'Anuradhapura', 'Badulla', 'Batticaloa', 'Colombo', 
+    'Galle', 'Gampaha', 'Hambantota', 'Jaffna', 'Kalutara', 
+    'Kandy', 'Kegalle', 'Kilinochchi', 'Kurunegala', 'Mannar', 
+    'Matale', 'Matara', 'Moneragala', 'Mullaitivu', 'Nuwara Eliya', 
+    'Polonnaruwa', 'Puttalam', 'Ratnapura', 'Trincomalee', 'Vavuniya'
+  ];
+  
+  final Map<String, Map<String, double>> locationDistances = {
+    'Ampara': {'Colombo': 330, 'Galle': 385, 'Kandy': 225},
+    'Colombo': {'Galle': 116, 'Kandy': 115, 'Anuradhapura': 206},
+    'Galle': {'Kandy': 200, 'Anuradhapura': 250},
+    'Kandy': {'Anuradhapura': 180},
+    // Add more distances between locations here
+  };
+
+  final DatabaseReference dbRef = FirebaseDatabase.instance.ref(); // Reference to Firebase Realtime Database
+
 
   @override
   Widget build(BuildContext context) {
