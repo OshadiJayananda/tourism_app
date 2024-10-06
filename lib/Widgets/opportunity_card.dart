@@ -6,11 +6,11 @@ class OpportunityCard extends StatelessWidget {
   final String location;
 
   const OpportunityCard({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.location,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

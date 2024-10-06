@@ -3,6 +3,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'carbonresults.dart'; // Import your results page here
 
 class CarbonFootprintCalculator extends StatefulWidget {
+  const CarbonFootprintCalculator({super.key});
+
   @override
   _CarbonFootprintCalculatorState createState() =>
       _CarbonFootprintCalculatorState();
@@ -58,7 +60,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text('Carbon Footprint Calculator',
+        title: const Text('Carbon Footprint Calculator',
             style: TextStyle(color: Colors.white)),
         centerTitle: true,
         elevation: 0,
@@ -79,7 +81,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     color: Colors.teal.shade700,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Pickup Location Dropdown
                 DropdownButtonFormField<String>(
@@ -103,7 +105,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     });
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Drop-off Location Dropdown
                 DropdownButtonFormField<String>(
@@ -127,7 +129,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     });
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Distance Input - read-only
                 TextFormField(
@@ -142,7 +144,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                   controller:
                       TextEditingController(text: distance.toStringAsFixed(2)),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Travel Mode Selection with Icons
                 Padding(
@@ -157,7 +159,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Centered Calculate Button
                 Center(
@@ -189,18 +191,18 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
                       padding:
-                          EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                          const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Calculate',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
             ),
           ),
@@ -218,7 +220,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
         });
       },
       child: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color:
               travelMode == mode ? Colors.teal.shade200 : Colors.grey.shade200,
@@ -228,7 +230,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
@@ -237,7 +239,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
             Icon(icon,
                 color: travelMode == mode ? Colors.teal : Colors.grey,
                 size: 30),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               mode,
               style: TextStyle(
