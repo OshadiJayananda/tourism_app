@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './EcofriendlyOptionsScreen.dart';
 
 class CarbonResults extends StatelessWidget {
   final double emissions; // Dynamic carbon emission value
@@ -147,20 +148,24 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
 
 
 
-  Widget _buildExploreMoreButton(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CarbonReducedOption()));
-        },
-        child: Text('Explore More Options'),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xFF009688),
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        ),
+Widget _buildExploreMoreButton(BuildContext context) {
+  return Center(
+    child: ElevatedButton(
+      onPressed: () {
+        // Navigate to the EcofriendlyOptionsScreen when button is clicked
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => EcofriendlyOptionsScreen()),
+        );
+      },
+      child: Text('Explore More Options'),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Color(0xFF009688),
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
-    );
-  }
+    ),
+  );
+}
 
   // Method to build Travel Mode Card
   Widget _buildTravelModeCard(IconData icon, String mode, String emission, Color color) {
