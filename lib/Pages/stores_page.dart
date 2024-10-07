@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app/Pages/add_shop_page.dart';
+import 'package:tourism_app/Widgets/shop_widgets/featured_item_list.dart';
 import '../Widgets/shop_widgets/CategoryCard.dart';
 import '../Widgets/shop_widgets/EcoFriendlyTip.dart';
-import '../Widgets/shop_widgets/FeaturedItemCard.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class StoresPage extends StatefulWidget {
   const StoresPage({super.key});
@@ -17,15 +17,21 @@ class _StoresPageState extends State<StoresPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: const Text('Eco Shop', style: TextStyle(color: Colors.white)),
+        title:
+            const Text('Eco Shopping', style: TextStyle(color: Colors.white)),
         elevation: 0,
         centerTitle: true,
         // leading: Icon(Icons.arrow_back, color: Colors.white),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {
-              print("button pressed");
+            onPressed: () async {
+              print("Adding shops...");
+              try {
+                await ShopService().addShopsToFirebase();
+              } catch (e) {
+                print("Error adding shops: $e");
+              }
             },
           ),
         ],
@@ -97,38 +103,8 @@ class _StoresPageState extends State<StoresPage> {
                   SingleChildScrollView(
                     scrollDirection:
                         Axis.horizontal, // Enable horizontal scrolling
-                    child: Row(
-                      children: [
-                        FeaturedItemCard(
-                          label: 'Organic Cotton T-Shirt',
-                          price: '\$20',
-                          subLabel: 'Tee for Tree',
-                          imgUrl:
-                              'assets/images/camping-organic-cotton-t-shirt.jpg',
-                          location:
-                              LatLng(37.7749, -122.4194), // Example coordinates
-                        ),
-                        const SizedBox(width: 16), // Space between the cards
-                        FeaturedItemCard(
-                          label: 'Reusable Bamboo Cutlery Set',
-                          price: '\$15',
-                          subLabel: 'Eco-Eat Utensils',
-                          imgUrl: 'assets/images/bamboo-cutlery-set.jpg',
-                          location:
-                              LatLng(37.7749, -122.4194), // Example coordinates
-                        ),
-                        const SizedBox(width: 16), // Space between the cards
-                        FeaturedItemCard(
-                          label: 'Eco-Friendly Water Bottle',
-                          price: '\$12',
-                          subLabel: 'Hydrate Sustainably',
-                          imgUrl: 'assets/images/reusable-water-bottle.jpg',
-                          location:
-                              LatLng(37.7749, -122.4194), // Example coordinates
-                        ),
-                      ],
-                    ),
-                  ),
+                    child: FeaturedItemsList(),
+                  )
                 ],
               ),
             ),
