@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app/Pages/add_opportunity_page.dart';
 import 'package:tourism_app/Pages/blood_donation_page.dart';
 import 'package:tourism_app/Pages/other_areas_page.dart';
 import '../widgets/volunteer_category.dart';
@@ -168,6 +169,32 @@ class _VolunteerPageState extends State<VolunteerPage> {
                   ),
                   child: const Text(
                     'Apply Volunteering',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+                        Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const AddOpportunityPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  ),
+                  child: const Text(
+                    'Add Opportunity',
                     style: TextStyle(
                       fontSize: 18,
                     ),
