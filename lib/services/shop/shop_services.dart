@@ -117,7 +117,8 @@ class ShopService {
   }
 
   Future<Map<String, dynamic>> getShopDetails(String shopId) async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref().child('shops/$shopId');
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref().child('shops/$shopId');
     DataSnapshot snapshot = await ref.get();
 
     if (snapshot.exists) {
@@ -140,9 +141,8 @@ class ShopService {
   }
 
   Future<void> updateShopLocation(String shopId, CustomLatLng location) async {
-    DatabaseReference ref = FirebaseDatabase.instance
-        .ref()
-        .child('shops/$shopId/location');
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref().child('shops/$shopId/location');
 
     await ref.set({
       'latitude': location.latitude,
@@ -151,23 +151,22 @@ class ShopService {
   }
 
   Future<void> updateShopItem(String shopId, String itemId, Item item) async {
-    DatabaseReference ref = FirebaseDatabase.instance
-        .ref()
-        .child('shops/$shopId/items/$itemId');
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref().child('shops/$shopId/items/$itemId');
 
     await ref.set(item.toMap());
   }
 
   Future<void> deleteShopItem(String shopId, String itemId) async {
-    DatabaseReference ref = FirebaseDatabase.instance
-        .ref()
-        .child('shops/$shopId/items/$itemId');
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref().child('shops/$shopId/items/$itemId');
 
     await ref.remove();
   }
 
   Future<void> deleteShop(String shopId) async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref().child('shops/$shopId');
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref().child('shops/$shopId');
 
     await ref.remove();
   }
@@ -179,12 +178,14 @@ class ShopService {
   }
 
   Future<void> addShopItem(String shopId, Item item) async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref().child('shops/$shopId/items');
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref().child('shops/$shopId/items');
 
     await ref.push().set(item.toMap());
   }
 
-  Future<void> updateItemPrice(String shopId, String itemId, String price) async {
+  Future<void> updateItemPrice(
+      String shopId, String itemId, String price) async {
     DatabaseReference ref = FirebaseDatabase.instance
         .ref()
         .child('shops/$shopId/items/$itemId/price');

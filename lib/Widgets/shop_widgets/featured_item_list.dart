@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_database/firebase_database.dart'; // Import for Firebase Realtime Database
-import 'package:tourism_app/Pages/shop_firebase.dart';
+import 'package:tourism_app/services/shop/shop_services.dart';
 import 'featured_item_card.dart'; // Import your FeaturedItemCard
 
 class FeaturedItemsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map<String, dynamic>>>(
-      // future: _fetchFeaturedItems(),
       future: ShopService().getFavoriteItems(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {

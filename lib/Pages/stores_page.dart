@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_app/Pages/shop_firebase.dart';
+import 'package:tourism_app/services/shop/shop_services.dart';
 import 'package:tourism_app/Widgets/shop_widgets/featured_item_list.dart';
 import '../Widgets/shop_widgets/CategoryCard.dart';
 import '../Widgets/shop_widgets/EcoFriendlyTip.dart';
