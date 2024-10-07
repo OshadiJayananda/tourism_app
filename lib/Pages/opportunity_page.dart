@@ -327,9 +327,11 @@ class _OpportunityPageState extends State<OpportunityPage> {
     );
   }
 
+
   void _contactOrganizer(BuildContext context, String contactNumber) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Calling organizer at $contactNumber')),
+
     );
     // Add logic to initiate a call using a package like url_launcher
   }

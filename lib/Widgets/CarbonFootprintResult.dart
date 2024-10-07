@@ -4,18 +4,18 @@ class CarbonFootprintResult extends StatelessWidget {
   final String resultMessage; // You can pass parameters as needed
 
   // Constructor to receive parameters
-  CarbonFootprintResult({Key? key, required this.resultMessage}) : super(key: key);
+  const CarbonFootprintResult({super.key, required this.resultMessage});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Carbon Footprint Result"),
+        title: const Text("Carbon Footprint Result"),
       ),
       body: Center(
         child: Text(
           resultMessage, // Display the result message
-          style: TextStyle(fontSize: 24),
+          style: const TextStyle(fontSize: 24),
         ),
       ),
     );

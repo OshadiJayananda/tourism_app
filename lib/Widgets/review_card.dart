@@ -7,12 +7,12 @@ class ReviewCard extends StatelessWidget {
   final String imageUrl; // URL or asset path for the reviewer's image
 
   const ReviewCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.review,
     required this.rating,
     required this.imageUrl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
