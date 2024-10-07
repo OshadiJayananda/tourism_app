@@ -68,7 +68,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBYnj9LZx12taE3_RqBcKl9sNuq_NJ39M8',
-    appId: '1:21712256481:ios:cef2883aa9c0bcce7326a0',
+    appId: '1:21712256481:ios:f03a13d757cf57837326a0',
     messagingSenderId: '21712256481',
     projectId: 'tourismapp-e188e',
     databaseURL: 'https://tourismapp-e188e-default-rtdb.asia-southeast1.firebasedatabase.app',
