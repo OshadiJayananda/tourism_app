@@ -43,15 +43,15 @@ class BloodDonationPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             // List of opportunities
-            OpportunityTile(
+            const OpportunityTile(
               leading: Icon(Icons.volunteer_activism),
               opportunity: "Community Blood Drive at City Hall - 10 AM to 4 PM, October 15th",
             ),
-            OpportunityTile(
+            const OpportunityTile(
               leading: Icon(Icons.volunteer_activism),
               opportunity: "Blood Donation Camp at Local High School - 9 AM to 3 PM, October 20th",
             ),
-            OpportunityTile(
+            const OpportunityTile(
               leading: Icon(Icons.volunteer_activism),
               opportunity: "Annual Blood Donation Event at Community Center - 8 AM to 6 PM, October 30th",
             ),
@@ -90,10 +90,10 @@ class OpportunityTile extends StatelessWidget {
   final Widget leading; // Added leading parameter
 
   const OpportunityTile({
-    Key? key,
+    super.key,
     required this.opportunity,
     required this.leading, // Ensure leading is a required parameter
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

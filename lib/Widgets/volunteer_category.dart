@@ -6,11 +6,11 @@ class VolunteerCategory extends StatelessWidget {
   final VoidCallback? onTap; // Declare the onTap parameter
 
   const VolunteerCategory({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     this.onTap, // Add this line to accept onTap
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

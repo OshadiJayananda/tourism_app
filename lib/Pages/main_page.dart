@@ -16,7 +16,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final List<Widget> pages = [
     const HomePage(),
-    CarbonFootprintCalculator(),
+    const CarbonFootprintCalculator(),
     const VolunteerPage(),
     const StoresPage(),
     const ProfilePage()

@@ -3,8 +3,11 @@ import 'package:firebase_database/firebase_database.dart';
 import 'carbonresults.dart'; // Import your results page here
 
 class CarbonFootprintCalculator extends StatefulWidget {
+  const CarbonFootprintCalculator({super.key});
+
   @override
-  _CarbonFootprintCalculatorState createState() => _CarbonFootprintCalculatorState();
+  _CarbonFootprintCalculatorState createState() =>
+      _CarbonFootprintCalculatorState();
 }
 
 class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
@@ -14,13 +17,33 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
   String? travelMode;
   double distance = 0.0; // Distance in kilometers
   final List<String> locations = [
-    'Ampara', 'Anuradhapura', 'Badulla', 'Batticaloa', 'Colombo', 
-    'Galle', 'Gampaha', 'Hambantota', 'Jaffna', 'Kalutara', 
-    'Kandy', 'Kegalle', 'Kilinochchi', 'Kurunegala', 'Mannar', 
-    'Matale', 'Matara', 'Moneragala', 'Mullaitivu', 'Nuwara Eliya', 
-    'Polonnaruwa', 'Puttalam', 'Ratnapura', 'Trincomalee', 'Vavuniya'
+    'Ampara',
+    'Anuradhapura',
+    'Badulla',
+    'Batticaloa',
+    'Colombo',
+    'Galle',
+    'Gampaha',
+    'Hambantota',
+    'Jaffna',
+    'Kalutara',
+    'Kandy',
+    'Kegalle',
+    'Kilinochchi',
+    'Kurunegala',
+    'Mannar',
+    'Matale',
+    'Matara',
+    'Moneragala',
+    'Mullaitivu',
+    'Nuwara Eliya',
+    'Polonnaruwa',
+    'Puttalam',
+    'Ratnapura',
+    'Trincomalee',
+    'Vavuniya'
   ];
-  
+
   final Map<String, Map<String, double>> locationDistances = {
     'Ampara': {'Colombo': 330, 'Galle': 385, 'Kandy': 225},
     'Colombo': {'Galle': 116, 'Kandy': 115, 'Anuradhapura': 206},
@@ -29,14 +52,16 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
     // Add more distances between locations here
   };
 
-  final DatabaseReference dbRef = FirebaseDatabase.instance.ref(); // Reference to Firebase Realtime Database
+  final DatabaseReference dbRef = FirebaseDatabase.instance
+      .ref('carbonResults'); // Reference to Firebase Realtime Database
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text('Carbon Footprint Calculator', style: TextStyle(color: Colors.white)),
+        title: const Text('Carbon Footprint Calculator',
+            style: TextStyle(color: Colors.white)),
         centerTitle: true,
         elevation: 0,
       ),
@@ -56,7 +81,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     color: Colors.teal.shade700,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Pickup Location Dropdown
                 DropdownButtonFormField<String>(
@@ -80,7 +105,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     });
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Drop-off Location Dropdown
                 DropdownButtonFormField<String>(
@@ -104,7 +129,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     });
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Distance Input - read-only
                 TextFormField(
@@ -116,9 +141,10 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     ),
                   ),
                   readOnly: true, // Make the distance field read-only
-                  controller: TextEditingController(text: distance.toStringAsFixed(2)),
+                  controller:
+                      TextEditingController(text: distance.toStringAsFixed(2)),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Travel Mode Selection with Icons
                 Padding(
@@ -133,7 +159,7 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Centered Calculate Button
                 Center(
@@ -157,22 +183,26 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                             ),
                           ),
                         );
+
+                        // Save data to Firebase
+                        await _saveDataToFirebase(emissions); // Add this line
                       }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
-                      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                      padding:
+                          const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Calculate',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
             ),
           ),
@@ -190,26 +220,32 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
         });
       },
       child: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: travelMode == mode ? Colors.teal.shade200 : Colors.grey.shade200,
+          color:
+              travelMode == mode ? Colors.teal.shade200 : Colors.grey.shade200,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
         child: Column(
           children: [
-            Icon(icon, color: travelMode == mode ? Colors.teal : Colors.grey, size: 30),
-            SizedBox(height: 8),
+            Icon(icon,
+                color: travelMode == mode ? Colors.teal : Colors.grey,
+                size: 30),
+            const SizedBox(height: 8),
             Text(
               mode,
-              style: TextStyle(color: travelMode == mode ? Colors.teal.shade700 : Colors.grey.shade700),
+              style: TextStyle(
+                  color: travelMode == mode
+                      ? Colors.teal.shade700
+                      : Colors.grey.shade700),
             ),
           ],
         ),
@@ -221,8 +257,10 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
   void _updateDistance() {
     if (pickupLocation != null && dropOffLocation != null) {
       // Fetch the distance from the locationDistances map
-      distance = locationDistances[pickupLocation]?[dropOffLocation] ?? 0.0; // Get distance based on selected locations
-      print('Distance from $pickupLocation to $dropOffLocation: $distance km'); // Debugging print statement
+      distance = locationDistances[pickupLocation]?[dropOffLocation] ??
+          0.0; // Get distance based on selected locations
+      print(
+          'Distance from $pickupLocation to $dropOffLocation: $distance km'); // Debugging print statement
       setState(() {}); // Refresh the UI
     } else {
       distance = 0.0; // Reset distance if either location is null
@@ -254,5 +292,19 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
     }
 
     return distance * emissionFactor; // Calculate total emissions
+  }
+
+  // Save data to Firebase Realtime Database
+  Future<void> _saveDataToFirebase(double emissions) async {
+    String key = dbRef.push().key!; // Generate a unique key for the new entry
+    await dbRef.child(key).set({
+      'pickupLocation': pickupLocation,
+      'dropOffLocation': dropOffLocation,
+      'travelMode': travelMode,
+      'emissions': emissions,
+      'timestamp': DateTime.now().millisecondsSinceEpoch, // Store timestamp
+    });
+    print(
+        'Data saved to Firebase: $pickupLocation, $dropOffLocation, $travelMode, $emissions');
   }
 }

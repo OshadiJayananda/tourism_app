@@ -14,8 +14,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(16.0),
-        color: Color(0xFF4B6A67), // Similar green color background
+        padding: const EdgeInsets.all(16.0),
+        color: const Color(0xFF4B6A67), // Similar green color background
         child: Center(
           // Wrap Column with Center
           child: Column(
@@ -27,7 +27,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 'assets/images/logo_onboarding.png', // Add your image asset
                 height: 120, // Adjust height as needed
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               // Title
               const Text(
                 "Start Your\nEco-Friendly Journey!",
