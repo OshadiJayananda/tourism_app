@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app/Pages/opportunity_page.dart';
 
 class BloodDonationPage extends StatelessWidget {
   const BloodDonationPage({super.key});
@@ -54,7 +55,29 @@ class BloodDonationPage extends StatelessWidget {
               leading: Icon(Icons.volunteer_activism),
               opportunity: "Annual Blood Donation Event at Community Center - 8 AM to 6 PM, October 30th",
             ),
-            // Add more opportunities as needed
+            Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Navigate to the OpportunityPage
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const OpportunityPage(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  child: const Text(
+                    'See All Available Opportunities',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ),// Add more opportunities as needed
           ],
         ),
       ),
