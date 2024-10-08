@@ -162,30 +162,31 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                 // Centered Calculate Button
                 Center(
                   child: ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
+onPressed: () async {
+  if (_formKey.currentState!.validate()) {
+    _formKey.currentState!.save();
 
-                        // Calculate emissions
-                        double emissions = _calculateCarbonEmissions();
+    // Calculate emissions for all travel modes
+    Map<String, double> emissionsMap = _calculateCarbonEmissions();
 
-                        // Navigate to results page
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CarbonResults(
-                              emissions: emissions,
-                              pickupLocation: pickupLocation!,
-                              dropOffLocation: dropOffLocation!,
-                              travelMode: travelMode!,
-                            ),
-                          ),
-                        );
+    // Navigate to results page
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CarbonResults(
+          emissions: emissionsMap[travelMode]!, // Emission for selected mode
+          pickupLocation: pickupLocation!,
+          dropOffLocation: dropOffLocation!,
+          travelMode: travelMode!,
+          allEmissions: emissionsMap, // Pass all emissions
+        ),
+      ),
+    );
 
-                        // Save data to Firebase
-                        await _saveDataToFirebase(emissions); // Add this line
-                      }
-                    },
+    // Save data to Firebase
+    await _saveDataToFirebase(emissionsMap[travelMode]!);
+  }
+},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
                       padding:
@@ -267,30 +268,46 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
   }
 
   // Calculate carbon emissions based on distance and travel mode
-  double _calculateCarbonEmissions() {
-    double emissionFactor;
+  // double _calculateCarbonEmissions() {
+  //   double emissionFactor;
 
-    // Set emission factors in kg CO2/km based on travel mode
-    switch (travelMode) {
-      case 'Car':
-        emissionFactor = 0.2; // Example: 0.2 kg CO2/km for cars
-        break;
-      case 'Bus':
-        emissionFactor = 0.05; // Example: 0.05 kg CO2/km for buses
-        break;
-      case 'Bicycle':
-        emissionFactor = 0.01; // Example: 0.01 kg CO2/km for bicycles
-        break;
-      case 'Train':
-        emissionFactor = 0.03; // Example: 0.03 kg CO2/km for trains
-        break;
-      default:
-        emissionFactor = 0.0; // Default value
-        break;
-    }
+  //   // Set emission factors in kg CO2/km based on travel mode
+  //   switch (travelMode) {
+  //     case 'Car':
+  //       emissionFactor = 0.2; // Example: 0.2 kg CO2/km for cars
+  //       break;
+  //     case 'Bus':
+  //       emissionFactor = 0.05; // Example: 0.05 kg CO2/km for buses
+  //       break;
+  //     case 'Bicycle':
+  //       emissionFactor = 0.01; // Example: 0.01 kg CO2/km for bicycles
+  //       break;
+  //     case 'Train':
+  //       emissionFactor = 0.03; // Example: 0.03 kg CO2/km for trains
+  //       break;
+  //     default:
+  //       emissionFactor = 0.0; // Default value
+  //       break;
+  //   }
 
-    return distance * emissionFactor; // Calculate total emissions
-  }
+  //   return distance * emissionFactor; // Calculate total emissions
+  // }
+
+  // Calculate carbon emissions based on distance and travel mode
+Map<String, double> _calculateCarbonEmissions() {
+  double carEmissions = distance * 0.2;    // Example: 0.2 kg CO2/km for cars
+  double busEmissions = distance * 0.05;   // Example: 0.05 kg CO2/km for buses
+  double bicycleEmissions = distance * 0.01; // Example: 0.01 kg CO2/km for bicycles
+  double trainEmissions = distance * 0.03; // Example: 0.03 kg CO2/km for trains
+
+  return {
+    'Car': carEmissions,
+    'Bus': busEmissions,
+    'Bicycle': bicycleEmissions,
+    'Train': trainEmissions,
+  };
+}
+
 
   // Save data to Firebase Realtime Database
   Future<void> _saveDataToFirebase(double emissions) async {

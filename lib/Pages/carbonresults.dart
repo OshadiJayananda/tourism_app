@@ -6,12 +6,14 @@ class CarbonResults extends StatelessWidget {
   final String pickupLocation;
   final String dropOffLocation;
   final String travelMode;
+  final Map<String, double> allEmissions; 
 
   CarbonResults({
     required this.emissions,
     required this.pickupLocation,
     required this.dropOffLocation,
     required this.travelMode,
+     required this.allEmissions, 
   });
 
   @override
@@ -34,7 +36,7 @@ class CarbonResults extends StatelessWidget {
             _buildEmissionDisplay(),
 
             // Suggested Travel Mode as Text
-            _buildSuggestedTravelMode(),
+            _buildSuggestedTravelModes(),
 
             // Best Travel Modes Section
             _buildBestTravelModesSection(),
@@ -83,22 +85,50 @@ class CarbonResults extends StatelessWidget {
     );
   }
 
-  Widget _buildSuggestedTravelMode() {
+// Method to suggest the two best travel modes based on emissions
+  List<String> suggestBestTravelModes() {
+    // Example travel modes with associated emissions
+    Map<String, double> travelModes = {
+      'Car': allEmissions['Car'] ?? double.infinity,
+      'Bus': allEmissions['Bus'] ?? double.infinity,
+      'Train': allEmissions['Train'] ?? double.infinity,
+      'Bicycle': allEmissions['Bicycle'] ?? double.infinity,
+    };
+
+    // Sort travel modes by emissions
+    var sortedModes = travelModes.entries.toList()
+      ..sort((a, b) => a.value.compareTo(b.value));
+
+    // Get the two best modes
+    return sortedModes.take(2).map((entry) => entry.key).toList();
+  }
+
+  Widget _buildSuggestedTravelModes() {
+    List<String> bestTravelModes = suggestBestTravelModes(); // Get the best travel modes
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
-            Text('Suggested Travel Mode:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text('Suggested Travel Modes:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             SizedBox(height: 8),
-            Text(travelMode, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF009688))),
+            Column(
+              children: bestTravelModes.map((mode) {
+                return Text(
+                  mode,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF009688)),
+                );
+              }).toList(),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildBestTravelModesSection() {
+
+   Widget _buildBestTravelModesSection() {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Column(
@@ -109,15 +139,17 @@ class CarbonResults extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildTravelModeCard(Icons.directions_car, 'Car', '8 kg CO2', Colors.redAccent),
-              _buildTravelModeCard(Icons.directions_bus, 'Bus', '3.5 kg CO2', Colors.orange),
-              _buildTravelModeCard(Icons.pedal_bike, 'Bicycle', '0 kg CO2', Colors.green),
+              _buildTravelModeCard(Icons.directions_car, 'Car', '${allEmissions['Car']?.toStringAsFixed(2)} kg CO2', Colors.redAccent),
+              _buildTravelModeCard(Icons.directions_bus, 'Bus', '${allEmissions['Bus']?.toStringAsFixed(2)} kg CO2', Colors.blueAccent),
+              _buildTravelModeCard(Icons.directions_bike, 'Bicycle', '${allEmissions['Bicycle']?.toStringAsFixed(2)} kg CO2', Colors.greenAccent),
+              _buildTravelModeCard(Icons.train, 'Train', '${allEmissions['Train']?.toStringAsFixed(2)} kg CO2', Colors.orangeAccent),
             ],
           ),
         ],
       ),
     );
   }
+
 
 Widget _buildAlternativeSuggestions(BuildContext context) {
   return Padding(
@@ -127,23 +159,66 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
       children: [
         Text('Alternative Suggestions', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         SizedBox(height: 16),
-        _buildAlternativeSuggestionCard('Use Public Transport', Icons.train, context, PublicTransportPage()),
+        _buildAlternativeSuggestionCard(
+          'Use Public Transport',
+          Icons.train,
+          context,
+          PublicTransportPage(),
+          'Recommended - Low Carbon Emissions'
+        ),
         SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Carpooling', Icons.car_rental, context, CarpoolingPage()),
+        _buildAlternativeSuggestionCard(
+          'Carpooling',
+          Icons.car_rental,
+          context,
+          CarpoolingPage(),
+          'Recommended - Share Rides to Reduce Emissions'
+        ),
         SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Walking', Icons.directions_walk, context, WalkingPage()),
+        _buildAlternativeSuggestionCard(
+          'Walking',
+          Icons.directions_walk,
+          context,
+          WalkingPage(),
+          'Recommended - Zero Emissions'
+        ),
         SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Electric Scooter', Icons.electric_scooter, context, ElectricScooterPage()),
+        _buildAlternativeSuggestionCard(
+          'Electric Scooter',
+          Icons.electric_scooter,
+          context,
+          ElectricScooterPage(),
+          'Recommended - Electric Power, No Fossil Fuels'
+        ),
         SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Car Sharing', Icons.group, context, CarSharingPage()),
+        _buildAlternativeSuggestionCard(
+          'Car Sharing',
+          Icons.group,
+          context,
+          CarSharingPage(),
+          'Recommended - Efficient Resource Use'
+        ),
         SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Hybrid Vehicles', Icons.electric_car, context, HybridVehiclesPage()),
+        _buildAlternativeSuggestionCard(
+          'Hybrid Vehicles',
+          Icons.electric_car,
+          context,
+          HybridVehiclesPage(),
+          'Recommended - Lower Emissions Than Traditional Cars'
+        ),
         SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Telecommuting', Icons.home, context, TelecommutingPage()),
+        _buildAlternativeSuggestionCard(
+          'Telecommuting',
+          Icons.home,
+          context,
+          TelecommutingPage(),
+          'Recommended - No Travel, No Emissions'
+        ),
       ],
     ),
   );
 }
+
 
 
 
@@ -190,21 +265,22 @@ Widget _buildExploreMoreButton(BuildContext context) {
   }
 
   // Method to build Alternative Suggestion Card
-  Widget _buildAlternativeSuggestionCard(String title, IconData icon, BuildContext context, Widget nextPage) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => nextPage));
-      },
-      child: Card(
-        elevation: 4,
-        child: ListTile(
-          leading: Icon(icon, color: Color(0xFF009688)),
-          title: Text(title, style: TextStyle(fontSize: 16)),
-          subtitle: Text('Recommended - Environmentally Friendly', style: TextStyle(color: Colors.grey)),
-        ),
+Widget _buildAlternativeSuggestionCard(String title, IconData icon, BuildContext context, Widget nextPage, String subtitle) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => nextPage));
+    },
+    child: Card(
+      elevation: 4,
+      child: ListTile(
+        leading: Icon(icon, color: Color(0xFF009688)),
+        title: Text(title, style: TextStyle(fontSize: 16)),
+        subtitle: Text(subtitle, style: TextStyle(color: Colors.grey)),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
 
 // Placeholder classes for navigation (replace these with your actual pages)
