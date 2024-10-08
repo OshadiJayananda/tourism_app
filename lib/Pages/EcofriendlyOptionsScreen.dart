@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app/Pages/carbonresults.dart';
 import './EcoFriendlyTours.dart';
+import 'WalkingArticle.dart';
+import 'PlantingTreesArticle.dart';
+import 'PublicTransportArticle.dart';
+import 'CyclingArticle.dart';
 
 class EcofriendlyOptionsScreen extends StatelessWidget {
   @override
@@ -47,14 +52,20 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
               children: [
                 // Public Transport Option
                 _buildTravelModeOption(
-                  title: "Eco-friendly Travel",
-                  subtitle: "Public Transport\nLow carbon emissions",
+                   context,
+                  "Eco-friendly Travel",
+                  "Public Transport\nLow carbon emissions",
+                  "This article discusses the benefits of public transport as an eco-friendly travel option.",
                   isRecommended: true,
+                  articleScreen: PublicTransportArticle(),
                 ),
                 // Cycling Option
                 _buildTravelModeOption(
-                  title: "Eco-friendly Travel",
-                  subtitle: "Cycling\nZero emissions",
+                  context,
+                 "Eco-friendly Travel",
+                  "Cycling\nZero emissions",
+                 "Cycling is one of the best ways to travel sustainably. This article elaborates on its advantages.",
+                  articleScreen: CyclingArticle(),
                 ),
               ],
             ),
@@ -72,32 +83,41 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
             SizedBox(height: 8),
 
             // Suggestions List
-            ListTile(
-              leading: Icon(Icons.directions_walk, color: Colors.green),
-              title: Text("Walking"),
-              subtitle: Text("Reduce emissions and stay active"),
+            Column(
+              children: [
+                _buildSuggestionListTile(
+                  context,
+                  "Walking",
+                  "Reduce emissions and stay active",
+                  "Walking is not only good for the environment but also for your health. This article discusses how walking contributes to sustainability.",
+                  articleScreen: WalkingArticle(),
+                ),
+                _buildSuggestionListTile(
+                  context,
+                  "Plant Trees",
+                  "Offset your carbon footprint",
+                  "Planting trees plays a crucial role in offsetting your carbon footprint. This article highlights its significance.",
+                  articleScreen: PlantingTreesArticle(),
+                ),
+              ],
             ),
-            ListTile(
-              leading: Icon(Icons.nature, color: Colors.green),
-              title: Text("Plant Trees"),
-              subtitle: Text("Offset your carbon footprint"),
-            ),
+
             SizedBox(height: 16),
 
             // Discover Button
-ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => EcoFriendlyTours()),
-    );
-  },
-  child: Text('Discover Eco-friendly Tours'),
-  style: ElevatedButton.styleFrom(
-    backgroundColor: Color(0xFF009688),
-    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-  ),
-)
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EcoFriendlyTours()),
+                );
+              },
+              child: Text('Discover Eco-friendly Tours'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF009688),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+            ),
           ],
         ),
       ),
@@ -105,8 +125,23 @@ ElevatedButton(
   }
 
   // Helper method to create travel mode options
-  Widget _buildTravelModeOption({required title, required String subtitle, bool isRecommended = false}) {
-    return Expanded(
+Widget _buildTravelModeOption(
+  BuildContext context,
+  String title,
+  String subtitle,
+  String article, {
+  bool isRecommended = false,
+  required Widget articleScreen,
+}) {
+  return Expanded(
+    child: GestureDetector(
+      onTap: () {
+        // Use the articleScreen parameter to navigate
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => articleScreen),
+        );
+      },
       child: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -139,6 +174,70 @@ ElevatedButton(
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.black54,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+  // Helper method to create suggestion list tiles
+  Widget _buildSuggestionListTile(
+      BuildContext context, 
+      String title, 
+      String subtitle, 
+      String article,
+      {required Widget articleScreen}) {
+    return ListTile(
+      leading: Icon(Icons.nature, color: Colors.green),
+      title: Text(title),
+      subtitle: Text(subtitle),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => articleScreen),
+        );
+      },
+    );
+  }
+}
+
+// Article screen to display detailed content
+class ArticleScreen extends StatelessWidget {
+  final String title;
+  final String content;
+
+  ArticleScreen({required this.title, required this.content});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+        backgroundColor: Color(0xFF009688),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16),
+            Text(
+              content,
+              style: TextStyle(fontSize: 16, color: Colors.black54),
+            ),
+            // Add an image if needed
+            SizedBox(height: 16),
+            Center(
+              child: Image.network(
+                'https://example.com/image.jpg', // Replace with a valid image URL
+                height: 200,
+                fit: BoxFit.cover,
               ),
             ),
           ],
