@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../Widgets/shop_widgets/CategoryCard.dart';
-import '../Widgets/shop_widgets/EcoFriendlyTip.dart';
-import '../Widgets/shop_widgets/FeaturedItemCard.dart';
+import '../../Widgets/shop_widgets/CategoryCard.dart';
+import '../../Widgets/shop_widgets/EcoFriendlyTip.dart';
+import '../../Widgets/shop_widgets/FeaturedItemCard.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class StoresPage extends StatefulWidget {

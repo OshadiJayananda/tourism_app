@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:tourism_app/Pages/carbon_screen1.dart';
 import 'package:tourism_app/Pages/home_page.dart';
@@ -6,21 +5,20 @@ import 'package:tourism_app/Pages/profile_page.dart';
 import 'package:tourism_app/Pages/shop/stores_page.dart';
 import 'package:tourism_app/Pages/volunteer_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class BottomNavbar extends StatefulWidget {
+  const BottomNavbar({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<BottomNavbar> createState() => _BottomNavbarState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _BottomNavbarState extends State<BottomNavbar> {
   final List<Widget> pages = [
     const HomePage(),
     const CarbonFootprintCalculator(),
     const VolunteerPage(),
     const StoresPage(),
     const ProfilePage()
-  
   ];
 
   int currentPage = 0;
@@ -36,7 +34,7 @@ class _MainPageState extends State<MainPage> {
             currentPage = value;
           });
         },
-        selectedItemColor: Colors.black,  // For selected item color
+        selectedItemColor: Colors.black, // For selected item color
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
@@ -57,13 +55,13 @@ class _MainPageState extends State<MainPage> {
             ),
             label: "Volunteering",
           ),
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(
               Icons.shop,
             ),
             label: "Shop",
           ),
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
             ),

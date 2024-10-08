@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class ShopDetailsPage extends StatelessWidget {
+class ShopDetailsPage extends StatefulWidget {
   final String label;
-  final String imageUrl; // Use this for the product image
-  final LatLng location; // Use this for the shop's location on the map
+  final String imageUrl;
+  final LatLng location;
 
-  const ShopDetailsPage({
+  ShopDetailsPage({
     Key? key,
     required this.label,
     required this.imageUrl,
@@ -14,9 +14,14 @@ class ShopDetailsPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ShopDetailsPage> createState() => _ShopDetailsPageState();
+}
+
+class _ShopDetailsPageState extends State<ShopDetailsPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(label)),
+      appBar: AppBar(title: Text(widget.label)),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -24,7 +29,7 @@ class ShopDetailsPage extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(8),
               child: Image.asset(
-                imageUrl,
+                widget.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -33,7 +38,7 @@ class ShopDetailsPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                label,
+                widget.label,
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
@@ -43,14 +48,14 @@ class ShopDetailsPage extends StatelessWidget {
               height: 200, // Set a fixed height for the map
               child: GoogleMap(
                 initialCameraPosition: CameraPosition(
-                  target: location,
+                  target: widget.location,
                   zoom: 14.0,
                 ),
                 markers: {
                   Marker(
-                    markerId: MarkerId(label),
-                    position: location,
-                    infoWindow: InfoWindow(title: label),
+                    markerId: MarkerId(widget.label),
+                    position: widget.location,
+                    infoWindow: InfoWindow(title: widget.label),
                   ),
                 },
               ),
