@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
 class EcoFriendlyTours extends StatelessWidget {
+  const EcoFriendlyTours({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Eco-Friendly Tours'),
-        backgroundColor: Color(0xFF004D40), // Dark green
+        title: const Text('Eco-Friendly Tours'),
+        backgroundColor: const Color(0xFF004D40), // Dark green
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             // Recommended Eco-Friendly Tours Title
-            Text(
+            const Text(
               "Recommended Eco-Friendly Tours",
               style: TextStyle(
                 fontSize: 24,
@@ -21,7 +23,7 @@ class EcoFriendlyTours extends StatelessWidget {
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Recommended Tours Section
             Row(
@@ -41,10 +43,10 @@ class EcoFriendlyTours extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
 
             // Eco-Friendly Travel Tips Title
-            Text(
+            const Text(
               "Eco-Friendly Travel Tips",
               style: TextStyle(
                 fontSize: 24,
@@ -52,7 +54,7 @@ class EcoFriendlyTours extends StatelessWidget {
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Travel Tips List
             _buildTravelTip(
@@ -60,7 +62,7 @@ class EcoFriendlyTours extends StatelessWidget {
               description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
               tags: ["Eco-friendly", "Travel"],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             _buildTravelTip(
               title: "Tip 2",
               description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -90,7 +92,7 @@ class EcoFriendlyTours extends StatelessWidget {
             label: 'Profile',
           ),
         ],
-        selectedItemColor: Color(0xFF004D40), // Active color for bottom navigation
+        selectedItemColor: const Color(0xFF004D40), // Active color for bottom navigation
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
           // Handle bottom navigation actions here
@@ -115,7 +117,7 @@ class EcoFriendlyTours extends StatelessWidget {
           );
         },
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.grey[200],
             borderRadius: BorderRadius.circular(8),
@@ -130,24 +132,24 @@ class EcoFriendlyTours extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Container(
                 height: 80,
                 width: double.infinity,
                 color: Colors.grey[300],
                 child: Center(child: Text(imageDescription)),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 description,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   color: Colors.black54,
                 ),
@@ -166,7 +168,7 @@ class EcoFriendlyTours extends StatelessWidget {
     required List<String> tags,
   }) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.grey[100],
         borderRadius: BorderRadius.circular(8),
@@ -178,8 +180,8 @@ class EcoFriendlyTours extends StatelessWidget {
           Row(
             children: tags.map((tag) {
               return Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                margin: EdgeInsets.only(right: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
                   color: Colors.green[100],
                   borderRadius: BorderRadius.circular(8),
@@ -195,18 +197,18 @@ class EcoFriendlyTours extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             description,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               color: Colors.black54,
             ),

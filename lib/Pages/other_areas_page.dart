@@ -22,11 +22,11 @@ class OtherAreasPage extends StatelessWidget {
                 borderRadius:
                     BorderRadius.vertical(bottom: Radius.circular(40)),
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Explore Eco-Friendly Volunteer Opportunities",
                       style: TextStyle(
@@ -50,19 +50,19 @@ class OtherAreasPage extends StatelessWidget {
             const SizedBox(height: 16.0),
 
             // Content area below the header
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Eco-Friendly Volunteer Opportunities:",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 22,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
 
                   // List of eco-friendly volunteering opportunities with icons
                   OpportunityTile(
@@ -111,10 +111,10 @@ class OpportunityTile extends StatelessWidget {
   final IconData icon; // Add icon property
 
   const OpportunityTile({
-    Key? key,
+    super.key,
     required this.opportunity,
     required this.icon, // Require icon
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -172,11 +172,11 @@ class OpportunityPage extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Contact $organizerName'),
-        content: Column(
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('Phone: +1 123-456-7890'),
-            const Text('Email: organizer@example.com'),
+            Text('Phone: +1 123-456-7890'),
+            Text('Email: organizer@example.com'),
           ],
         ),
         actions: [

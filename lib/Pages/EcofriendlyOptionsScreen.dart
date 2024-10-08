@@ -7,19 +7,21 @@ import 'PublicTransportArticle.dart';
 import 'CyclingArticle.dart';
 
 class EcofriendlyOptionsScreen extends StatelessWidget {
+  const EcofriendlyOptionsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Greeny Way - Eco-friendly Options'),
-        backgroundColor: Color(0xFF009688),
+        title: const Text('Greeny Way - Eco-friendly Options'),
+        backgroundColor: const Color(0xFF009688),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             // Your Eco-friendly Journey Title and Subtitle
-            Text(
+            const Text(
               "Your Eco-friendly Journey",
               style: TextStyle(
                 fontSize: 24,
@@ -27,18 +29,18 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               "Reduce your carbon footprint with sustainable travel options.",
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Best Travel Modes Section
-            Text(
+            const Text(
               "Best Travel Modes",
               style: TextStyle(
                 fontSize: 20,
@@ -46,7 +48,7 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -69,10 +71,10 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Alternative Suggestions Section
-            Text(
+            const Text(
               "Alternative Suggestions",
               style: TextStyle(
                 fontSize: 20,
@@ -80,7 +82,7 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
 
             // Suggestions List
             Column(
@@ -102,7 +104,7 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
               ],
             ),
 
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Discover Button
             ElevatedButton(
@@ -112,11 +114,11 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => EcoFriendlyTours()),
                 );
               },
-              child: Text('Discover Eco-friendly Tours'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF009688),
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                backgroundColor: const Color(0xFF009688),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               ),
+              child: Text('Discover Eco-friendly Tours'),
             ),
           ],
         ),
@@ -143,7 +145,7 @@ Widget _buildTravelModeOption(
         );
       },
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.grey[200],
           borderRadius: BorderRadius.circular(8),
@@ -153,25 +155,25 @@ Widget _buildTravelModeOption(
           children: [
             if (isRecommended)
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 color: Colors.green[700],
-                child: Text(
+                child: const Text(
                   "Recommended",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               subtitle,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 color: Colors.black54,
               ),
@@ -190,7 +192,7 @@ Widget _buildTravelModeOption(
       String article,
       {required Widget articleScreen}) {
     return ListTile(
-      leading: Icon(Icons.nature, color: Colors.green),
+      leading: const Icon(Icons.nature, color: Colors.green),
       title: Text(title),
       subtitle: Text(subtitle),
       onTap: () {
@@ -208,14 +210,14 @@ class ArticleScreen extends StatelessWidget {
   final String title;
   final String content;
 
-  ArticleScreen({required this.title, required this.content});
+  const ArticleScreen({super.key, required this.title, required this.content});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
-        backgroundColor: Color(0xFF009688),
+        backgroundColor: const Color(0xFF009688),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -224,15 +226,15 @@ class ArticleScreen extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               content,
-              style: TextStyle(fontSize: 16, color: Colors.black54),
+              style: const TextStyle(fontSize: 16, color: Colors.black54),
             ),
             // Add an image if needed
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Center(
               child: Image.network(
                 'https://example.com/image.jpg', // Replace with a valid image URL
