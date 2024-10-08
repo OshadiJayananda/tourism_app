@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_app/Pages/carbonresults.dart';
-import './EcoFriendlyTours.dart';
+import 'EcoFriendlyTours.dart';
 import 'WalkingArticle.dart';
 import 'PlantingTreesArticle.dart';
 import 'PublicTransportArticle.dart';
@@ -59,7 +58,7 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
                   "Public Transport\nLow carbon emissions",
                   "This article discusses the benefits of public transport as an eco-friendly travel option.",
                   isRecommended: true,
-                  articleScreen: PublicTransportArticle(),
+                  articleScreen: const PublicTransportArticle(),
                 ),
                 // Cycling Option
                 _buildTravelModeOption(
@@ -67,7 +66,7 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
                  "Eco-friendly Travel",
                   "Cycling\nZero emissions",
                  "Cycling is one of the best ways to travel sustainably. This article elaborates on its advantages.",
-                  articleScreen: CyclingArticle(),
+                  articleScreen: const CyclingArticle(),
                 ),
               ],
             ),
@@ -92,14 +91,14 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
                   "Walking",
                   "Reduce emissions and stay active",
                   "Walking is not only good for the environment but also for your health. This article discusses how walking contributes to sustainability.",
-                  articleScreen: WalkingArticle(),
+                  articleScreen: const WalkingArticle(),
                 ),
                 _buildSuggestionListTile(
                   context,
                   "Plant Trees",
                   "Offset your carbon footprint",
                   "Planting trees plays a crucial role in offsetting your carbon footprint. This article highlights its significance.",
-                  articleScreen: PlantingTreesArticle(),
+                  articleScreen: const PlantingTreesArticle(),
                 ),
               ],
             ),
@@ -111,14 +110,14 @@ class EcofriendlyOptionsScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EcoFriendlyTours()),
+                  MaterialPageRoute(builder: (context) => const EcoFriendlyTours()),
                 );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF009688),
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               ),
-              child: Text('Discover Eco-friendly Tours'),
+              child: const Text('Discover Eco-friendly Tours'),
             ),
           ],
         ),

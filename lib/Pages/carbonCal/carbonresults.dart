@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './EcofriendlyOptionsScreen.dart';
+import 'EcofriendlyOptionsScreen.dart';
 
 class CarbonResults extends StatelessWidget {
   final double emissions; // Dynamic carbon emission value
@@ -163,7 +163,7 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
           'Use Public Transport',
           Icons.train,
           context,
-          PublicTransportPage(),
+          const PublicTransportPage(),
           'Recommended - Low Carbon Emissions'
         ),
         const SizedBox(height: 8),
@@ -171,7 +171,7 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
           'Carpooling',
           Icons.car_rental,
           context,
-          CarpoolingPage(),
+          const CarpoolingPage(),
           'Recommended - Share Rides to Reduce Emissions'
         ),
         const SizedBox(height: 8),
@@ -179,7 +179,7 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
           'Walking',
           Icons.directions_walk,
           context,
-          WalkingPage(),
+          const WalkingPage(),
           'Recommended - Zero Emissions'
         ),
         const SizedBox(height: 8),
@@ -187,7 +187,7 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
           'Electric Scooter',
           Icons.electric_scooter,
           context,
-          ElectricScooterPage(),
+          const ElectricScooterPage(),
           'Recommended - Electric Power, No Fossil Fuels'
         ),
         const SizedBox(height: 8),
@@ -195,7 +195,7 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
           'Car Sharing',
           Icons.group,
           context,
-          CarSharingPage(),
+          const CarSharingPage(),
           'Recommended - Efficient Resource Use'
         ),
         const SizedBox(height: 8),
@@ -203,7 +203,7 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
           'Hybrid Vehicles',
           Icons.electric_car,
           context,
-          HybridVehiclesPage(),
+          const HybridVehiclesPage(),
           'Recommended - Lower Emissions Than Traditional Cars'
         ),
         const SizedBox(height: 8),
@@ -211,7 +211,7 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
           'Telecommuting',
           Icons.home,
           context,
-          TelecommutingPage(),
+          const TelecommutingPage(),
           'Recommended - No Travel, No Emissions'
         ),
       ],
@@ -230,14 +230,14 @@ Widget _buildExploreMoreButton(BuildContext context) {
         // Navigate to the EcofriendlyOptionsScreen when button is clicked
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => EcofriendlyOptionsScreen()),
+          MaterialPageRoute(builder: (context) => const EcofriendlyOptionsScreen()),
         );
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF009688),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
-      child: Text('Explore More Options'),
+      child: const Text('Explore More Options'),
     ),
   );
 }

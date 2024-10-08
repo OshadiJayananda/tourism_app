@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-
-// Article for Public Transport
-class PublicTransportArticle extends StatelessWidget {
-  const PublicTransportArticle({super.key});
+// Article for Walking
+class WalkingArticle extends StatelessWidget {
+  const WalkingArticle({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Public Transport - A Sustainable Choice"),
+        title: const Text("Walking - A Sustainable Choice"),
         backgroundColor: const Color(0xFF009688),
       ),
       body: Padding(
@@ -19,43 +18,43 @@ class PublicTransportArticle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Public Transport: Your Green Travel Option",
+                "Walking: A Path to Sustainability",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
               const Text(
-                "Public transport is an essential part of sustainable urban living. By choosing buses, trains, and subways, we can significantly reduce our carbon footprint and alleviate traffic congestion.",
+                "Walking is more than just a means of transportation; it's a lifestyle choice that significantly reduces your carbon footprint. By choosing to walk, you not only help the environment but also enhance your health and well-being.",
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
               Image.network(
-                'https://example.com/public_transport.jpg', // Replace with a valid image URL
+                'https://example.com/walking.jpg', // Replace with a valid image URL
                 height: 200,
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 16),
               const Text(
-                "Benefits of Public Transport",
+                "Health Benefits of Walking",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
-                "1. **Reduced Emissions**: Public transport produces fewer greenhouse gases per passenger compared to private vehicles.\n"
-                "2. **Cost-effective**: Using public transport can save you money on fuel, parking, and maintenance.\n"
-                "3. **Less Traffic Congestion**: Fewer cars on the road lead to smoother traffic flow and shorter travel times.",
+                "1. **Boosts Mood**: Walking releases endorphins, helping to reduce stress and improve your mood.\n"
+                "2. **Improves Fitness**: Regular walking strengthens your heart, improves circulation, and helps maintain a healthy weight.\n"
+                "3. **Connects You to Nature**: Walking in green spaces can rejuvenate your mind and enhance your sense of well-being.",
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
               const Text(
-                "How to Use Public Transport Effectively",
+                "Sustainable Practices",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
-                "Here are some tips for getting the most out of your public transport experience:\n"
-                "- Plan your routes using apps or websites.\n"
-                "- Be mindful of peak hours to avoid overcrowding.\n"
-                "- Respect fellow passengers and keep the environment clean.",
+                "To make your walking journey even more sustainable, consider the following:\n"
+                "- Choose scenic routes to enjoy nature and motivate yourself.\n"
+                "- Join community walking groups to encourage others.\n"
+                "- Use eco-friendly footwear and accessories.",
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
@@ -68,7 +67,7 @@ class PublicTransportArticle extends StatelessWidget {
                     backgroundColor: const Color(0xFF009688),
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   ),
-                  child: Text("Back to Eco-friendly Options"),
+                  child: const Text("Back to Eco-friendly Options"),
                 ),
               ),
             ],
@@ -78,3 +77,4 @@ class PublicTransportArticle extends StatelessWidget {
     );
   }
 }
+

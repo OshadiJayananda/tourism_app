@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-// Article for Walking
-class WalkingArticle extends StatelessWidget {
-  const WalkingArticle({super.key});
+
+
+// Article for Planting Trees
+class PlantingTreesArticle extends StatelessWidget {
+  const PlantingTreesArticle({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Walking - A Sustainable Choice"),
+        title: const Text("Planting Trees - Nature's Air Filters"),
         backgroundColor: const Color(0xFF009688),
       ),
       body: Padding(
@@ -18,43 +20,43 @@ class WalkingArticle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Walking: A Path to Sustainability",
+                "Planting Trees: A Gift to the Planet",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
               const Text(
-                "Walking is more than just a means of transportation; it's a lifestyle choice that significantly reduces your carbon footprint. By choosing to walk, you not only help the environment but also enhance your health and well-being.",
+                "Planting trees is one of the most effective ways to combat climate change. Trees absorb carbon dioxide and release oxygen, making our air cleaner and healthier. Moreover, they provide shelter to countless species and enhance biodiversity.",
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
               Image.network(
-                'https://example.com/walking.jpg', // Replace with a valid image URL
+                'https://example.com/planting_trees.jpg', // Replace with a valid image URL
                 height: 200,
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 16),
               const Text(
-                "Health Benefits of Walking",
+                "Why Plant Trees?",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
-                "1. **Boosts Mood**: Walking releases endorphins, helping to reduce stress and improve your mood.\n"
-                "2. **Improves Fitness**: Regular walking strengthens your heart, improves circulation, and helps maintain a healthy weight.\n"
-                "3. **Connects You to Nature**: Walking in green spaces can rejuvenate your mind and enhance your sense of well-being.",
+                "1. **Air Quality Improvement**: Trees filter pollutants and dust from the air, making it cleaner.\n"
+                "2. **Wildlife Habitat**: Trees provide a home for numerous species of birds, insects, and mammals.\n"
+                "3. **Climate Regulation**: Trees play a critical role in moderating the Earth's climate by reducing heat and conserving water.",
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
               const Text(
-                "Sustainable Practices",
+                "How to Get Involved",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
-                "To make your walking journey even more sustainable, consider the following:\n"
-                "- Choose scenic routes to enjoy nature and motivate yourself.\n"
-                "- Join community walking groups to encourage others.\n"
-                "- Use eco-friendly footwear and accessories.",
+                "Join local initiatives or start your own tree-planting project. Here are a few tips to make an impact:\n"
+                "- Organize community planting events.\n"
+                "- Educate others about the importance of trees.\n"
+                "- Share your experiences on social media to inspire more people.",
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
@@ -67,7 +69,7 @@ class WalkingArticle extends StatelessWidget {
                     backgroundColor: const Color(0xFF009688),
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   ),
-                  child: Text("Back to Eco-friendly Options"),
+                  child: const Text("Back to Eco-friendly Options"),
                 ),
               ),
             ],
@@ -77,4 +79,3 @@ class WalkingArticle extends StatelessWidget {
     );
   }
 }
-

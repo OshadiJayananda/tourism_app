@@ -67,7 +67,7 @@ class CyclingArticle extends StatelessWidget {
                     backgroundColor: const Color(0xFF009688),
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   ),
-                  child: Text("Back to Eco-friendly Options"),
+                  child: const Text("Back to Eco-friendly Options"),
                 ),
               ),
             ],
