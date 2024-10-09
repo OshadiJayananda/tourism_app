@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 // Article for Public Transport
 class PublicTransportArticle extends StatelessWidget {
   const PublicTransportArticle({super.key});
@@ -11,6 +10,7 @@ class PublicTransportArticle extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Public Transport - A Sustainable Choice"),
         backgroundColor: const Color(0xFF009688),
+        centerTitle: true, // Centering the title for balance
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -20,7 +20,11 @@ class PublicTransportArticle extends StatelessWidget {
             children: [
               const Text(
                 "Public Transport: Your Green Travel Option",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF00695C), // Darker shade of teal for the main title
+                ),
               ),
               const SizedBox(height: 16),
               const Text(
@@ -28,27 +32,38 @@ class PublicTransportArticle extends StatelessWidget {
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
-              Image.network(
-                'https://example.com/public_transport.jpg', // Replace with a valid image URL
-                height: 200,
-                fit: BoxFit.cover,
+              Center(
+                child: Image.asset(
+                  'assets/images/publicTransport.jpg', // Path to your illustration
+                  height: 200, // Adjust height as needed
+                  width: 300, // Adjust width as needed
+                  fit: BoxFit.cover, // Cover to maintain aspect ratio
+                ),
               ),
               const SizedBox(height: 16),
               const Text(
                 "Benefits of Public Transport",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF00796B), // Lighter shade of teal for section titles
+                ),
               ),
               const SizedBox(height: 8),
               const Text(
-                "1. **Reduced Emissions**: Public transport produces fewer greenhouse gases per passenger compared to private vehicles.\n"
-                "2. **Cost-effective**: Using public transport can save you money on fuel, parking, and maintenance.\n"
-                "3. **Less Traffic Congestion**: Fewer cars on the road lead to smoother traffic flow and shorter travel times.",
+                "1. Reduced Emissions: Public transport produces fewer greenhouse gases per passenger compared to private vehicles.\n"
+                "2. Cost-effective: Using public transport can save you money on fuel, parking, and maintenance.\n"
+                "3. Less Traffic Congestion: Fewer cars on the road lead to smoother traffic flow and shorter travel times.",
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
               const Text(
                 "How to Use Public Transport Effectively",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF00796B), // Lighter shade of teal for section titles
+                ),
               ),
               const SizedBox(height: 8),
               const Text(
@@ -67,8 +82,18 @@ class PublicTransportArticle extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF009688),
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30), // Rounded button
+                    ),
                   ),
-                  child: const Text("Back to Eco-friendly Options"),
+                  child: const Text(
+                    "Back to Eco-friendly Options",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white, // White text for better contrast
+                    ),
+                  ),
                 ),
               ),
             ],

@@ -38,6 +38,7 @@ dependencies:
   firebase_database: ^11.1.4
   # geolocator: ^8.2.0
   shared_preferences: ^2.0.11
+  font_awesome_flutter: ^10.2.0
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,10 @@ flutter:
     - assets/images/logo.png
     - assets/images/tour1.jpg
     - assets/images/tour2.jpg
+    - assets/images/planting.jpg
+    - assets/images/cycling.jpg
+    - assets/images/publicTransport.jpg
+    - assets/images/walking.jpg
 
   #   - images/a_dot_ham.jpeg
 

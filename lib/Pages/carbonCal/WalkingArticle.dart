@@ -10,6 +10,7 @@ class WalkingArticle extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Walking - A Sustainable Choice"),
         backgroundColor: const Color(0xFF009688),
+        centerTitle: true, // Centering the title for balance
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -19,7 +20,11 @@ class WalkingArticle extends StatelessWidget {
             children: [
               const Text(
                 "Walking: A Path to Sustainability",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF00695C), // Darker shade of teal for the main title
+                ),
               ),
               const SizedBox(height: 16),
               const Text(
@@ -27,27 +32,38 @@ class WalkingArticle extends StatelessWidget {
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
-              Image.network(
-                'https://example.com/walking.jpg', // Replace with a valid image URL
-                height: 200,
-                fit: BoxFit.cover,
+              Center(
+                child: Image.asset(
+                  'assets/images/walking.jpg', // Path to your illustration
+                  height: 200, // Adjust height as needed
+                  width: 300, // Adjust width as needed
+                  fit: BoxFit.cover, // Cover to maintain aspect ratio
+                ),
               ),
               const SizedBox(height: 16),
               const Text(
                 "Health Benefits of Walking",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF00796B), // Lighter shade of teal for section titles
+                ),
               ),
               const SizedBox(height: 8),
               const Text(
-                "1. **Boosts Mood**: Walking releases endorphins, helping to reduce stress and improve your mood.\n"
-                "2. **Improves Fitness**: Regular walking strengthens your heart, improves circulation, and helps maintain a healthy weight.\n"
-                "3. **Connects You to Nature**: Walking in green spaces can rejuvenate your mind and enhance your sense of well-being.",
+                "1. Boosts Mood: Walking releases endorphins, helping to reduce stress and improve your mood.\n"
+                "2. Improves Fitness: Regular walking strengthens your heart, improves circulation, and helps maintain a healthy weight.\n"
+                "3. Connects You to Nature: Walking in green spaces can rejuvenate your mind and enhance your sense of well-being.",
                 style: TextStyle(fontSize: 16, color: Colors.black54),
               ),
               const SizedBox(height: 16),
               const Text(
                 "Sustainable Practices",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF00796B), // Lighter shade of teal for section titles
+                ),
               ),
               const SizedBox(height: 8),
               const Text(
@@ -66,8 +82,18 @@ class WalkingArticle extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF009688),
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30), // Rounded button
+                    ),
                   ),
-                  child: const Text("Back to Eco-friendly Options"),
+                  child: const Text(
+                    "Back to Eco-friendly Options",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white, // White text for better contrast
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -77,4 +103,3 @@ class WalkingArticle extends StatelessWidget {
     );
   }
 }
-
