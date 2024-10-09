@@ -34,8 +34,8 @@ class Tour2Page extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.train, // Train icon
                     color: Colors.green,
@@ -77,8 +77,8 @@ class Tour2Page extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.solidLightbulb, // Eco tip icon
                     color: Colors.orange,
@@ -94,8 +94,8 @@ class Tour2Page extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 8),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.recycle, // Recycle icon
                     color: Colors.green,

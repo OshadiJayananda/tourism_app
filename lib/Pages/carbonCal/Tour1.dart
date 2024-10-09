@@ -34,8 +34,8 @@ class Tour1Page extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.bicycle, // Bicycle icon
                     color: Colors.green,
@@ -68,8 +68,8 @@ class Tour1Page extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 16),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.recycle, // Recycle icon
                     color: Colors.green,

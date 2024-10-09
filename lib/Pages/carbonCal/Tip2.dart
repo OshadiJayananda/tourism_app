@@ -38,9 +38,9 @@ class Tip2Page extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
+              const Text(
                 'Choosing eco-friendly transportation options, such as trains, bicycles, or electric vehicles, reduces your carbon footprint and helps protect the environment. These alternatives are more energy-efficient and emit far fewer greenhouse gases than conventional methods like cars and airplanes.',
-                style: const TextStyle(fontSize: 16, height: 1.5),
+                style: TextStyle(fontSize: 16, height: 1.5),
               ),
               const SizedBox(height: 16),
 
@@ -56,10 +56,10 @@ class Tip2Page extends StatelessWidget {
               const SizedBox(height: 16),
 
               // List of transportation tips
-              Column(
+              const Column(
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Icon(
                         FontAwesomeIcons.train, // Train icon
                         color: Colors.green,
@@ -73,9 +73,9 @@ class Tip2Page extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Row(
-                    children: const [
+                    children: [
                       Icon(
                         FontAwesomeIcons.bicycle, // Bicycle icon
                         color: Colors.orange,
@@ -89,9 +89,9 @@ class Tip2Page extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Row(
-                    children: const [
+                    children: [
                       Icon(
                         FontAwesomeIcons.car, // Electric vehicle icon
                         color: Colors.blueAccent,

@@ -39,6 +39,7 @@ dependencies:
   # geolocator: ^8.2.0
   shared_preferences: ^2.0.11
   font_awesome_flutter: ^10.2.0
+  flutter_svg: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +73,14 @@ flutter:
     - assets/images/cycling.jpg
     - assets/images/publicTransport.jpg
     - assets/images/walking.jpg
+    - assets/images/Carpooling.svg
+    - assets/images/CarSharing.svg
+    - assets/images/ElectricScooter.svg
+    - assets/images/HybridVehicles.svg
+    - assets/images/PublicTransport.svg
+    - assets/images/Telecommuting.svg
+    - assets/images/Walking.svg
+
 
   #   - images/a_dot_ham.jpeg
 

@@ -18,8 +18,8 @@ class Tip1Page extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header Section
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.leaf, // Leaf icon for eco-friendly
                     color: Colors.green,
@@ -45,8 +45,8 @@ class Tip1Page extends StatelessWidget {
                   color: Colors.green.shade50,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Icon(
                       FontAwesomeIcons.suitcaseRolling, // Luggage icon
                       color: Colors.brown,
@@ -105,8 +105,8 @@ class Tip1Page extends StatelessWidget {
               const SizedBox(height: 8),
 
               // List of reusable item tips
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.droplet,  // Water bottle icon
                     color: Colors.blue,
@@ -121,8 +121,8 @@ class Tip1Page extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 8),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.shoppingBag, // Shopping bag icon
                     color: Colors.orange,
@@ -137,8 +137,8 @@ class Tip1Page extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 8),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     FontAwesomeIcons.utensils, // Cutlery icon
                     color: Colors.green,
@@ -178,8 +178,8 @@ class Tip1Page extends StatelessWidget {
                   color: Colors.teal.shade100,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Icon(
                       FontAwesomeIcons.planeDeparture,
                       color: Colors.indigo,
