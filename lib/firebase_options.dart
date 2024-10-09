@@ -52,9 +52,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '21712256481',
     projectId: 'tourismapp-e188e',
     authDomain: 'tourismapp-e188e.firebaseapp.com',
-    databaseURL: 'https://tourismapp-e188e-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'tourismapp-e188e.appspot.com',
     measurementId: 'G-P3T35NMVEF',
+    databaseURL: 'https://tourismapp-e188e-default-rtdb.firebaseio.com/', 
+
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -62,18 +63,16 @@ class DefaultFirebaseOptions {
     appId: '1:21712256481:android:a893ea66fe20fcdb7326a0',
     messagingSenderId: '21712256481',
     projectId: 'tourismapp-e188e',
-    databaseURL: 'https://tourismapp-e188e-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'tourismapp-e188e.appspot.com',
-  );
+    databaseURL: 'https://tourismapp-e188e-default-rtdb.firebaseio.com/', 
+   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBYnj9LZx12taE3_RqBcKl9sNuq_NJ39M8',
-    appId: '1:21712256481:ios:f03a13d757cf57837326a0',
+    appId: '1:21712256481:ios:cef2883aa9c0bcce7326a0',
     messagingSenderId: '21712256481',
     projectId: 'tourismapp-e188e',
-    databaseURL: 'https://tourismapp-e188e-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'tourismapp-e188e.appspot.com',
     iosBundleId: 'com.example.tourismApp',
   );
-
 }
