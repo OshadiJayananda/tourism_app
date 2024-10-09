@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tourism_app/Pages/carbon_screen1.dart';
 import 'package:tourism_app/Pages/home_page.dart';
 import 'package:tourism_app/Pages/profile_page.dart';
-import 'package:tourism_app/Pages/stores_page.dart';
+import 'package:tourism_app/Pages/StoresPages/stores_page.dart';
 import 'package:tourism_app/Pages/volunteer_page.dart';
 
 class MainPage extends StatefulWidget {
