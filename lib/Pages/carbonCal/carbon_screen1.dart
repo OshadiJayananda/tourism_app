@@ -806,48 +806,49 @@ class _CarbonFootprintCalculatorState extends State<CarbonFootprintCalculator> {
                 ),
                 const SizedBox(height: 20),
 
-                // Centered Calculate Button
-                Center(
-                  child: ElevatedButton(
-onPressed: () async {
-  if (_formKey.currentState!.validate()) {
-    _formKey.currentState!.save();
+// Centered Calculate Button
+Center(
+  child: ElevatedButton(
+    onPressed: travelMode == null
+        ? null
+        : () async {
+            if (_formKey.currentState!.validate()) {
+              _formKey.currentState!.save();
 
-    // Calculate emissions for all travel modes
-    Map<String, double> emissionsMap = _calculateCarbonEmissions();
+              // Calculate emissions for all travel modes
+              Map<String, double> emissionsMap = _calculateCarbonEmissions();
 
-    // Navigate to results page
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CarbonResults(
-          emissions: emissionsMap[travelMode]!, // Emission for selected mode
-          pickupLocation: pickupLocation!,
-          dropOffLocation: dropOffLocation!,
-          travelMode: travelMode!,
-          allEmissions: emissionsMap, // Pass all emissions
-        ),
-      ),
-    );
-
-    // Save data to Firebase
-    await _saveDataToFirebase(emissionsMap[travelMode]!);
-  }
-},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: const Text(
-                      'Calculate',
-                      style: TextStyle(fontSize: 18),
-                    ),
+              // Navigate to results page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CarbonResults(
+                    emissions: emissionsMap[travelMode]!, // Emission for selected mode
+                    pickupLocation: pickupLocation!,
+                    dropOffLocation: dropOffLocation!,
+                    travelMode: travelMode!,
+                    allEmissions: emissionsMap, // Pass all emissions
                   ),
                 ),
+              );
+
+              // Save data to Firebase
+              await _saveDataToFirebase(emissionsMap[travelMode]!);
+            }
+          },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: travelMode == null ? Colors.grey : Colors.teal,
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    ),
+    child: const Text(
+      'Calculate',
+      style: TextStyle(fontSize: 18),
+    ),
+  ),
+),
                 const SizedBox(height: 20),
               ],
             ),
