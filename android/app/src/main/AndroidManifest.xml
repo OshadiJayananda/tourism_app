@@ -3,7 +3,8 @@
     <application
         android:label="tourism_app"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAT7REsuFzI5nIYuLlhCwQ_qjKpGP7M0EM"/>

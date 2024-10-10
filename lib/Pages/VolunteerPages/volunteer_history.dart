@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:tourism_app/Pages/opportunity_page.dart';
+import 'package:tourism_app/Pages/VolunteerPages/opportunity_page.dart';
 
 class VolunteerHistory extends StatefulWidget {
   const VolunteerHistory({super.key});
