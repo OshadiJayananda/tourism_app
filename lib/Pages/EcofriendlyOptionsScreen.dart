@@ -91,14 +91,14 @@ ElevatedButton(
   onPressed: () {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => EcoFriendlyTours()),
+      MaterialPageRoute(builder: (context) => const EcoFriendlyTours()),
     );
   },
   style: ElevatedButton.styleFrom(
     backgroundColor: const Color(0xFF009688),
     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
   ),
-  child: Text('Discover Eco-friendly Tours'),
+  child: const Text('Discover Eco-friendly Tours'),
 )
           ],
         ),

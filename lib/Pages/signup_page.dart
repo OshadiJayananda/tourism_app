@@ -2,6 +2,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+
   @override
   _SignupPageState createState() => _SignupPageState();
 }
@@ -40,7 +42,7 @@ class _SignupPageState extends State<SignupPage> {
       _databaseReference.push().set(userData).then((_) {
         // Display success message
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('User signed up successfully')));
+            .showSnackBar(const SnackBar(content: Text('User signed up successfully')));
         // Clear input fields
         _usernameController.clear();
         _homeLocationController.clear();
@@ -49,12 +51,12 @@ class _SignupPageState extends State<SignupPage> {
       }).catchError((onError) {
         // Handle any errors
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Error signing up user')));
+            .showSnackBar(const SnackBar(content: Text('Error signing up user')));
       });
     } else {
       // Display error message if fields are empty
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Please fill all fields')));
+          .showSnackBar(const SnackBar(content: Text('Please fill all fields')));
     }
   }
 
@@ -62,7 +64,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        title: const Text('Sign Up'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -70,25 +72,25 @@ class _SignupPageState extends State<SignupPage> {
           children: [
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(labelText: 'Username'),
+              decoration: const InputDecoration(labelText: 'Username'),
             ),
             TextField(
               controller: _homeLocationController,
-              decoration: InputDecoration(labelText: 'Home Location'),
+              decoration: const InputDecoration(labelText: 'Home Location'),
             ),
             TextField(
               controller: _emailController,
-              decoration: InputDecoration(labelText: 'E-mail'),
+              decoration: const InputDecoration(labelText: 'E-mail'),
             ),
             TextField(
               controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: const InputDecoration(labelText: 'Password'),
               obscureText: true, // To obscure the password input
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _signupUser,
-              child: Text('Sign Up'),
+              child: const Text('Sign Up'),
             ),
           ],
         ),

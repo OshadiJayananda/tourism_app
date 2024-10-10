@@ -9,7 +9,7 @@ class FeaturedItemCard extends StatelessWidget {
   final String imgUrl;
   final LatLng location; // Add location to pass to the details page
 
-  FeaturedItemCard({
+  const FeaturedItemCard({super.key, 
     required this.label,
     required this.subLabel,
     required this.price,

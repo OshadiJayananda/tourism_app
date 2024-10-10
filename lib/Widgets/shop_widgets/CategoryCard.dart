@@ -6,7 +6,7 @@ class CategoryCard extends StatelessWidget {
   final Color color;
 
   const CategoryCard(
-      {required this.icon, required this.label, required this.color});
+      {super.key, required this.icon, required this.label, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class CategoryCard extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: Colors.white,
-            child: Icon(icon, color: color),
             radius: 30,
+            child: Icon(icon, color: color),
           ),
           const SizedBox(height: 8),
           Text(

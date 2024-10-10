@@ -6,7 +6,7 @@ class EcoFriendlyTip extends StatelessWidget {
   final String description;
   final String details; // Additional details to show in the modal
 
-  const EcoFriendlyTip({
+  const EcoFriendlyTip({super.key, 
     required this.icon,
     required this.title,
     required this.description,
@@ -60,13 +60,13 @@ class EcoFriendlyTip extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop(); // Close the modal
                     },
-                    child: const Text('Close'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                    child: const Text('Close'),
                   ),
                 ],
               ),

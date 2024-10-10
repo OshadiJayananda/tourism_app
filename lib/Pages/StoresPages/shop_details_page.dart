@@ -7,11 +7,11 @@ class ShopDetailsPage extends StatelessWidget {
   final LatLng location; // Use this for the shop's location on the map
 
   const ShopDetailsPage({
-    Key? key,
+    super.key,
     required this.label,
     required this.imageUrl,
     required this.location,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,24 +22,24 @@ class ShopDetailsPage extends StatelessWidget {
           children: [
             // Display the product image at the top
             Container(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: Image.asset(
                 imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Display the name of the shop
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
                 label,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // Map window displaying the shop's location
-            Container(
+            SizedBox(
               height: 200, // Set a fixed height for the map
               child: GoogleMap(
                 initialCameraPosition: CameraPosition(
@@ -55,10 +55,10 @@ class ShopDetailsPage extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 10), // Space before the featured products
+            const SizedBox(height: 10), // Space before the featured products
             // Featured Products Section
             Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -77,7 +77,7 @@ class ShopDetailsPage extends StatelessWidget {
                     'Featured Products',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   // Example of a featured product
                   const ProductCard(
                     imageUrl:
@@ -87,7 +87,7 @@ class ShopDetailsPage extends StatelessWidget {
                   ),
                   // Add more ProductCards as needed
 
-                  SizedBox(height: 10), // Add some space before the button
+                  const SizedBox(height: 10), // Add some space before the button
                   Center(
                     // Center the button
                     child: ElevatedButton(
@@ -95,12 +95,12 @@ class ShopDetailsPage extends StatelessWidget {
                         // Handle button press (e.g., navigate to message screen or open chat)
                         print('Message button pressed');
                       },
-                      child: Text('Message'),
                       style: ElevatedButton.styleFrom(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        textStyle: TextStyle(fontSize: 18),
+                            const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        textStyle: const TextStyle(fontSize: 18),
                       ),
+                      child: const Text('Message'),
                     ),
                   ),
                 ],
@@ -119,18 +119,18 @@ class ProductCard extends StatelessWidget {
   final String price;
 
   const ProductCard({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.price,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Row(
           children: [
             Image.asset(
@@ -139,17 +139,17 @@ class ProductCard extends StatelessWidget {
               height: 60,
               fit: BoxFit.cover,
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 5),
-                  Text(price, style: TextStyle(color: Colors.green)),
+                  const SizedBox(height: 5),
+                  Text(price, style: const TextStyle(color: Colors.green)),
                 ],
               ),
             ),

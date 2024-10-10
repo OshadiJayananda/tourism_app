@@ -261,9 +261,9 @@ class _OpportunityPageState extends State<OpportunityPage> {
                   children: [
                     const Icon(Icons.calendar_today, color: Colors.teal),
                     const SizedBox(width: 8),
-                    Text(
+                    const Text(
                       'Date: ',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Expanded(
                       child: Text(
@@ -282,9 +282,9 @@ class _OpportunityPageState extends State<OpportunityPage> {
                   children: [
                     const Icon(Icons.location_on, color: Colors.teal),
                     const SizedBox(width: 8),
-                    Text(
+                    const Text(
                       'Location: ',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Expanded(
                       child: Text(
@@ -303,9 +303,9 @@ class _OpportunityPageState extends State<OpportunityPage> {
                   children: [
                     const Icon(Icons.access_time, color: Colors.teal),
                     const SizedBox(width: 8),
-                    Text(
+                    const Text(
                       'Check-in Time: ',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Expanded(
                       child: Text(
@@ -324,9 +324,9 @@ class _OpportunityPageState extends State<OpportunityPage> {
                   children: [
                     const Icon(Icons.timelapse, color: Colors.teal),
                     const SizedBox(width: 8),
-                    Text(
+                    const Text(
                       'Duration: ',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Expanded(
                       child: Text(
@@ -340,9 +340,9 @@ class _OpportunityPageState extends State<OpportunityPage> {
                 const SizedBox(height: 12),
 
                 // Description
-                Text(
+                const Text(
                   'Description:',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 4),
                 Text(
@@ -361,9 +361,9 @@ class _OpportunityPageState extends State<OpportunityPage> {
                   children: [
                     const Icon(Icons.phone, color: Colors.teal),
                     const SizedBox(width: 8),
-                    Text(
+                    const Text(
                       'Contact Number: ',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Expanded(
                       child: Text(

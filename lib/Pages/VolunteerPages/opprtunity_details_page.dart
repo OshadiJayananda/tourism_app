@@ -12,7 +12,7 @@ import 'package:tourism_app/Pages/VolunteerPages/volunteer_history.dart';
 class OpportunityDetailsPage extends StatelessWidget {
   final String opportunityTitle;
 
-  OpportunityDetailsPage({required this.opportunityTitle});
+  const OpportunityDetailsPage({super.key, required this.opportunityTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class OpportunityDetailsPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => VolunteerHistory()),
+                          builder: (context) => const VolunteerHistory()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -49,7 +49,7 @@ class OpportunityDetailsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'My Projects',
                     style: TextStyle(
                       fontSize: 20,
@@ -76,7 +76,7 @@ class OpportunityDetailsPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ReviewConfirmation()),
+                            builder: (context) => const ReviewConfirmation()),
                       );
                     },
                   ),

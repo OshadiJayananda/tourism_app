@@ -75,8 +75,8 @@ class _CheckinPageState extends State<CheckinPage> {
 
             // Additional Information
             if (isCheckedIn)
-              Column(
-                children: const [
+              const Column(
+                children: [
                   Text(
                     'You have successfully checked in. Thank you for your punctuality!',
                     style: TextStyle(fontSize: 16, color: Colors.black54),
