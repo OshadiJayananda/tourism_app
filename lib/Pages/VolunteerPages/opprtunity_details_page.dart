@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_app/Pages/LoginHours.dart';
-import 'package:tourism_app/Pages/checkIn_page.dart';
-import 'package:tourism_app/Pages/connLocatContact.dart';
-import 'package:tourism_app/Pages/contactVolunteers.dart';
-import 'package:tourism_app/Pages/planandPack.dart';
+import 'package:tourism_app/Pages/VolunteerPages/LoginHours.dart';
+import 'package:tourism_app/Pages/VolunteerPages/checkIn_page.dart';
+import 'package:tourism_app/Pages/VolunteerPages/connLocatContact.dart';
+import 'package:tourism_app/Pages/VolunteerPages/contactVolunteers.dart';
+import 'package:tourism_app/Pages/VolunteerPages/planandPack.dart';
 import 'package:tourism_app/Pages/projectDetails.dart';
-import 'package:tourism_app/Pages/reviewConfirmation.dart';
-import 'package:tourism_app/Pages/reviewResourses.dart';
-import 'package:tourism_app/Pages/volunteer_history.dart';
+import 'package:tourism_app/Pages/VolunteerPages/reviewConfirmation.dart';
+import 'package:tourism_app/Pages/VolunteerPages/reviewResourses.dart';
+import 'package:tourism_app/Pages/VolunteerPages/volunteer_history.dart';
 
 class OpportunityDetailsPage extends StatelessWidget {
   final String opportunityTitle;

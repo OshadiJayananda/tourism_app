@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:tourism_app/Pages/opprtunity_details_page.dart';
+import 'package:tourism_app/Pages/VolunteerPages/opprtunity_details_page.dart';
 
 class OpportunityPage extends StatefulWidget {
   const OpportunityPage({super.key});
@@ -10,13 +10,18 @@ class OpportunityPage extends StatefulWidget {
 }
 
 class _OpportunityPageState extends State<OpportunityPage> {
-  final DatabaseReference _opportunityRef = FirebaseDatabase.instance.ref('opportunities');
+  final DatabaseReference _opportunityRef =
+      FirebaseDatabase.instance.ref('opportunities');
   Map<String, List<Map<String, String>>> categorizedOpportunities = {};
+  Map<String, List<Map<String, String>>> filteredOpportunities = {};
+  TextEditingController _searchController = TextEditingController();
+  String searchQuery = '';
 
   @override
   void initState() {
     super.initState();
     _fetchOpportunities();
+    _searchController.addListener(_updateSearchQuery);
   }
 
   Future<void> _fetchOpportunities() async {
@@ -25,7 +30,8 @@ class _OpportunityPageState extends State<OpportunityPage> {
 
       if (snapshot.exists) {
         final data = snapshot.value as Map<dynamic, dynamic>;
-        Map<String, List<Map<String, String>>> tempCategorizedOpportunities = {};
+        Map<String, List<Map<String, String>>> tempCategorizedOpportunities =
+            {};
 
         data.forEach((key, value) {
           final opportunity = Map<String, String>.from(value);
@@ -39,6 +45,8 @@ class _OpportunityPageState extends State<OpportunityPage> {
 
         setState(() {
           categorizedOpportunities = tempCategorizedOpportunities;
+          filteredOpportunities = Map.from(
+              categorizedOpportunities); // Initialize filteredOpportunities
         });
       } else {
         print('No opportunities found.');
@@ -51,6 +59,33 @@ class _OpportunityPageState extends State<OpportunityPage> {
     }
   }
 
+  void _updateSearchQuery() {
+    setState(() {
+      searchQuery = _searchController.text.toLowerCase();
+      _filterOpportunities();
+    });
+  }
+
+  void _filterOpportunities() {
+    if (searchQuery.isEmpty) {
+      setState(() {
+        filteredOpportunities =
+            Map.from(categorizedOpportunities); // Show all if no query
+      });
+    } else {
+      Map<String, List<Map<String, String>>> tempFilteredOpportunities = {};
+      categorizedOpportunities.forEach((category, opportunities) {
+        if (category.toLowerCase().contains(searchQuery)) {
+          tempFilteredOpportunities[category] = opportunities;
+        }
+      });
+
+      setState(() {
+        filteredOpportunities = tempFilteredOpportunities;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +93,15 @@ class _OpportunityPageState extends State<OpportunityPage> {
       appBar: AppBar(
         backgroundColor: Colors.teal,
         elevation: 0,
-        title: const TextField(
-          decoration: InputDecoration(
-            hintText: 'Search for opportunities',
+        title: TextField(
+          controller: _searchController,
+          decoration: const InputDecoration(
+            hintText: 'Search for opportunities by category',
             prefixIcon: Icon(Icons.search, color: Colors.white),
             border: InputBorder.none,
             contentPadding: EdgeInsets.all(12.0),
           ),
+          style: const TextStyle(color: Colors.white),
         ),
         leading: IconButton(
           icon: const Icon(Icons.menu, color: Colors.white),
@@ -73,45 +110,111 @@ class _OpportunityPageState extends State<OpportunityPage> {
           },
         ),
       ),
-      body: categorizedOpportunities.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: categorizedOpportunities.keys.length,
-              itemBuilder: (context, index) {
-                final category = categorizedOpportunities.keys.elementAt(index);
-                final opportunities = categorizedOpportunities[category]!;
+      body: Column(
+        children: [
+          // Add the volunteering image here
+          // SizedBox(
+          //   width: double.infinity, // Make image full width
+          //   height: 180, // Adjust height as needed
+          //   child: ClipRect(
+          //     child: Align(
+          //       // alignment: Alignment.topCenter, // Adjust from top or bottom
+          //       heightFactor:
+          //           0.7, // Adjust this to control how much of the image is visible
+          //       child: Image.asset(
+          //         'assets/images/volunteering_img2.jpeg', // Your image path
+          //         fit: BoxFit
+          //             .cover, // Ensure the image covers the area proportionally
+          //       ),
+          //     ),
+          //   ),
+          // ),
 
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    elevation: 5,
-                    child: ExpansionTile(
-                      backgroundColor: Colors.white,
-                      title: Row(
-                        children: [
-                          const Icon(Icons.category, color: Colors.teal),
-                          const SizedBox(width: 8),
-                          Text(
-                            category,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.teal,
-                            ),
-                          ),
-                        ],
-                      ),
-                      children: opportunities.map((opportunity) {
-                        return _buildOpportunityCard(opportunity);
-                      }).toList(),
-                    ),
-                  ),
-                );
-              },
+          SizedBox(
+            width: double.infinity,
+            height: 180, // You can adjust the height as needed
+            child: Image.asset(
+              'assets/images/volunteering_img2.jpeg', // Path to your asset image
+              fit: BoxFit.cover,
             ),
+          ),
+          // Divider line or space after image
+          const SizedBox(height: 10),
+                              Text(
+                      "Explore Eco-Friendly Volunteer Opportunities",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: const Color.fromARGB(255, 0, 88, 79),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      "Make a difference by contributing to the environment!",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: const Color.fromARGB(255, 0, 88, 79),
+                      ),
+                    ),
+
+                    SizedBox(height: 10),
+          // The main body: opportunity list
+          Expanded(
+            child: filteredOpportunities.isEmpty
+                ? Center(
+                    child: searchQuery.isEmpty
+                        ? const CircularProgressIndicator()
+                        : const Text(
+                            'No opportunity type',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.teal),
+                          ),
+                  )
+                : ListView.builder(
+                    itemCount: filteredOpportunities.keys.length,
+                    itemBuilder: (context, index) {
+                      final category =
+                          filteredOpportunities.keys.elementAt(index);
+                      final opportunities = filteredOpportunities[category]!;
+
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 4.0),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          elevation: 5,
+                          child: ExpansionTile(
+                            backgroundColor: Colors.white,
+                            title: Row(
+                              children: [
+                                const Icon(Icons.category, color: Colors.teal),
+                                const SizedBox(width: 8),
+                                Text(
+                                  category,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.teal,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            children: opportunities.map((opportunity) {
+                              return _buildOpportunityCard(opportunity);
+                            }).toList(),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+          ),
+          
+        ],
+      ),
     );
   }
 
@@ -127,7 +230,8 @@ class _OpportunityPageState extends State<OpportunityPage> {
         children: [
           if (opportunity.containsKey('image'))
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(15.0)),
               child: Image.network(
                 opportunity['image']!,
                 height: 180,
@@ -164,7 +268,8 @@ class _OpportunityPageState extends State<OpportunityPage> {
                     Expanded(
                       child: Text(
                         opportunity['date'] ?? 'No date available',
-                        style: const TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                            color: Colors.teal, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -184,7 +289,8 @@ class _OpportunityPageState extends State<OpportunityPage> {
                     Expanded(
                       child: Text(
                         opportunity['location'] ?? 'No location',
-                        style: const TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                            color: Colors.teal, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -204,7 +310,8 @@ class _OpportunityPageState extends State<OpportunityPage> {
                     Expanded(
                       child: Text(
                         opportunity['checkInTime'] ?? 'No check-in time',
-                        style: const TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                            color: Colors.teal, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -224,7 +331,8 @@ class _OpportunityPageState extends State<OpportunityPage> {
                     Expanded(
                       child: Text(
                         opportunity['duration'] ?? 'No duration',
-                        style: const TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                            color: Colors.teal, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -259,15 +367,16 @@ class _OpportunityPageState extends State<OpportunityPage> {
                     ),
                     Expanded(
                       child: Text(
-                        opportunity['contactNumber'] ?? 'No contact number',
-                        style: const TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
+                        opportunity['contactNumber'] ?? 'No contact available',
+                        style: const TextStyle(
+                            color: Colors.teal, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 16),
 
-                // Buttons: Apply and Contact Organizer
+                // Button for More Details
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -302,7 +411,8 @@ class _OpportunityPageState extends State<OpportunityPage> {
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
-                        _contactOrganizer(context, opportunity['contactNumber']!);
+                        _contactOrganizer(
+                            context, opportunity['contactNumber']!);
                       },
                       icon: const Icon(Icons.contact_phone),
                       label: const Text('Contact Organizer'),
@@ -327,11 +437,9 @@ class _OpportunityPageState extends State<OpportunityPage> {
     );
   }
 
-
   void _contactOrganizer(BuildContext context, String contactNumber) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Calling organizer at $contactNumber')),
-
     );
     // Add logic to initiate a call using a package like url_launcher
   }
