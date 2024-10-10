@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourism_app/Pages/main_page.dart';
+import 'addlocations_page.dart';  // Import the add location page here
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -37,16 +38,25 @@ class _LoginPageState extends State<LoginPage> {
           // Verify password
           userData.forEach((key, value) async {
             if (value['password'] == password) {
-              // Correct credentials, navigate to home page
-
               // Save user ID to session storage using SharedPreferences
               SharedPreferences prefs = await SharedPreferences.getInstance();
               await prefs.setString('loggedUserId', key); // Store the user ID
 
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const MainPage()),
-              );
+              // Check if username is 'Admin'
+              if (username == 'Admin') {
+                // Navigate to the AddLocationsPage
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddLocationsPage()),
+                );
+              } else {
+                // Navigate to the MainPage for regular users
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MainPage()),
+                );
+              }
+
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Login successful')));
             } else {

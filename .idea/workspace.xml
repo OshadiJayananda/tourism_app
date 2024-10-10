@@ -10,31 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5676dcbe-4b8e-48a9-97c2-de19fd82493d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/galle-fort.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/namunukula.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/nine-arch.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/EcofriendlyOptionsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/EcofriendlyOptionsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/carbonresults.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/carbonresults.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/checkIn_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/checkIn_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/const.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/main_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/main_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/opportunity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/opportunity_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/opprtunity_details_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/opprtunity_details_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/shop_details_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/shop_details_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/signup_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/stores_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/stores_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/volunteer_history.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/volunteer_history.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Widgets/shop_widgets/CategoryCard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Widgets/shop_widgets/CategoryCard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Widgets/shop_widgets/EcoFriendlyTip.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Widgets/shop_widgets/EcoFriendlyTip.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Widgets/shop_widgets/FeaturedItemCard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Widgets/shop_widgets/FeaturedItemCard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
