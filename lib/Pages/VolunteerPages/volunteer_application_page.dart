@@ -99,6 +99,22 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
     });
   }
 
+  void _resetForm() {
+    setState(() {
+      name = '';
+      age = '';
+      birthday = null;
+      email = '';
+      phoneNumber = '';
+      country = '';
+      hasVolunteeredBefore = false;
+      availability = 'Full-time';
+      skills = '';
+      pickedFile = null; // Reset the selected file
+    });
+    _formKey.currentState?.reset(); // Reset the form state
+  }
+
   @override
   Widget build(BuildContext context) {
     final volunteerRef = database.child('volunteers');
@@ -129,7 +145,7 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                         backgroundImage:
                             AssetImage('assets/images/avatarImg.jpg'),
                       ),
-      
+
                 Positioned(
                   bottom: -10,
                   left: 80,
@@ -159,6 +175,13 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   decoration: const InputDecoration(hintText: 'Enter your age'),
                   keyboardType: TextInputType.number,
                   onChanged: (value) => setState(() => age = value),
+                  validator: (value) {
+                    int? ageValue = int.tryParse(value ?? '');
+                    if (ageValue == null || ageValue < 18) {
+                      return 'Age must be at least 18.';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 const Text('Birthday',
@@ -174,6 +197,12 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                         ),
                         readOnly: true,
                         onTap: () => _selectDate(context),
+                        validator: (value) {
+                          if (age == '22' && birthday?.year != 2002) {
+                            return 'Your birthday year must match your age (22 = 2002).';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     IconButton(
@@ -190,6 +219,13 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                       const InputDecoration(hintText: 'Enter your email'),
                   keyboardType: TextInputType.emailAddress,
                   onChanged: (value) => setState(() => email = value),
+                  validator: (value) {
+                    if (value != null &&
+                        !(value.endsWith('@gmail.com') || value.endsWith('.lk'))) {
+                      return 'Email must end with @gmail.com or .lk';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 const Text('Phone Number',
@@ -199,6 +235,12 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                       hintText: 'Enter your phone number'),
                   keyboardType: TextInputType.phone,
                   onChanged: (value) => setState(() => phoneNumber = value),
+                  validator: (value) {
+                    if (value == null || value.length != 10) {
+                      return 'Phone number must be exactly 10 digits.';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 const Text('Country of Residence',
@@ -245,60 +287,32 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                       hintText: 'Enter skills relevant to volunteering'),
                   onChanged: (value) => setState(() => skills = value),
                 ),
-                const SizedBox(height: 24),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    // In the submit button's onPressed method:
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Construct a map of the volunteer details
-                        final volunteerData = {
-                          'name': name,
-                          'email': email,
-                          'phoneNumber': phoneNumber,
-                          'country': country,
-                          'age': age,
-                          'birthday': birthday != null
-                              ? "${birthday!.day}/${birthday!.month}/${birthday!.year}"
-                              : null,
-                          'hasVolunteeredBefore': hasVolunteeredBefore,
-                          'availability': availability,
-                          'skills': skills,
-                        };
+                const SizedBox(height: 32),
+                ElevatedButton(
+                  child: const Text('Submit'),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // Save data to Firebase
+                      final newVolunteer = <String, dynamic>{
+                        'name': name,
+                        'age': age,
+                        'birthday': birthday?.toIso8601String(),
+                        'email': email,
+                        'phoneNumber': phoneNumber,
+                        'country': country,
+                        'hasVolunteeredBefore': hasVolunteeredBefore,
+                        'availability': availability,
+                        'skills': skills,
+                      };
+                      volunteerRef.push().set(newVolunteer);
 
-                        // Save the data to Firebase Realtime Database
-                        volunteerRef.push().set(volunteerData).then((_) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content:
-                                    Text('Application Submitted Successfully')),
-                          );
+                      _resetForm(); // Reset the form after submission
 
-                          // Clear the image selection
-                          setState(() {
-                            pickedFile = null; // Clear the picked file
-                            _formKey.currentState!.reset();
-                            birthday = null; // Reset birthday
-                            hasVolunteeredBefore = false;
-                            availability = 'Full-time';
-                          });
-                        }).catchError((error) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text(
-                                    'Failed to submit application: $error')),
-                          );
-                        });
-                      }
-                    },
-
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                    ),
-                    child: const Text('Submit Application'),
-                  ),
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Form submitted!')),
+                      );
+                    }
+                  },
                 ),
               ],
             ),
