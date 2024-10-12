@@ -127,19 +127,19 @@ Widget _buildAlternativeSuggestions(BuildContext context) {
       children: [
         const Text('Alternative Suggestions', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         const SizedBox(height: 16),
-        _buildAlternativeSuggestionCard('Use Public Transport', Icons.train, context, PublicTransportPage()),
+        _buildAlternativeSuggestionCard('Use Public Transport', Icons.train, context, const PublicTransportPage()),
         const SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Carpooling', Icons.car_rental, context, CarpoolingPage()),
+        _buildAlternativeSuggestionCard('Carpooling', Icons.car_rental, context, const CarpoolingPage()),
         const SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Walking', Icons.directions_walk, context, WalkingPage()),
+        _buildAlternativeSuggestionCard('Walking', Icons.directions_walk, context, const WalkingPage()),
         const SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Electric Scooter', Icons.electric_scooter, context, ElectricScooterPage()),
+        _buildAlternativeSuggestionCard('Electric Scooter', Icons.electric_scooter, context, const ElectricScooterPage()),
         const SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Car Sharing', Icons.group, context, CarSharingPage()),
+        _buildAlternativeSuggestionCard('Car Sharing', Icons.group, context, const CarSharingPage()),
         const SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Hybrid Vehicles', Icons.electric_car, context, HybridVehiclesPage()),
+        _buildAlternativeSuggestionCard('Hybrid Vehicles', Icons.electric_car, context, const HybridVehiclesPage()),
         const SizedBox(height: 8),
-        _buildAlternativeSuggestionCard('Telecommuting', Icons.home, context, TelecommutingPage()),
+        _buildAlternativeSuggestionCard('Telecommuting', Icons.home, context, const TelecommutingPage()),
       ],
     ),
   );
@@ -155,14 +155,14 @@ Widget _buildExploreMoreButton(BuildContext context) {
         // Navigate to the EcofriendlyOptionsScreen when button is clicked
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => EcofriendlyOptionsScreen()),
+          MaterialPageRoute(builder: (context) => const EcofriendlyOptionsScreen()),
         );
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF009688),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       ),
-      child: Text('Explore More Options'),
+      child: const Text('Explore More Options'),
     ),
   );
 }

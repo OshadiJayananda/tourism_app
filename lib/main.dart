@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tourism_app/Pages/login_page.dart';
 import 'package:tourism_app/Pages/main_page.dart';
 import 'package:tourism_app/Pages/onboarding_screen.dart';
+import 'package:tourism_app/Pages/signup_page.dart';
 // import 'firebase_options.dart';
 
 void main() async {
@@ -65,7 +67,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       // Show OnboardingScreen if it's the first time, otherwise MainPage
-      home: isFirstTime ? const OnboardingScreen() : const MainPage(),
+      home: isFirstTime ? const OnboardingScreen() : const LoginPage(),
     );
   }
 }

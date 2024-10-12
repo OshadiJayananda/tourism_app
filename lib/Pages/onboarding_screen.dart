@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tourism_app/Pages/main_page.dart';
+import 'package:tourism_app/Pages/signup_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -50,7 +50,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   // Navigate to MainPage
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => const MainPage(),
+                      builder: (context) => const SignupPage(),
                     ),
                   );
                 },

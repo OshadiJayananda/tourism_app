@@ -51,11 +51,11 @@ class _VolunteerHistoryState extends State<VolunteerHistory> {
               ),
               const SizedBox(height: 20),
               // Feedback section
-              Row(
+              const Row(
                 children: [
-                  const Icon(Icons.feedback, color: Colors.orange),
-                  const SizedBox(width: 10),
-                  const Text(
+                  Icon(Icons.feedback, color: Colors.orange),
+                  SizedBox(width: 10),
+                  Text(
                     "Provide Feedback",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
@@ -132,7 +132,7 @@ class _VolunteerHistoryState extends State<VolunteerHistory> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => OpportunityPage()),
+                        builder: (context) => const OpportunityPage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
