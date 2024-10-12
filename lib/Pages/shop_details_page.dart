@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tourism_app/Pages/shop_pages/messages.dart';
+// Import the Messages page
 
 class ShopDetailsPage extends StatelessWidget {
   final String label;
@@ -92,8 +94,13 @@ class ShopDetailsPage extends StatelessWidget {
                     // Center the button
                     child: ElevatedButton(
                       onPressed: () {
-                        // Handle button press (e.g., navigate to message screen or open chat)
-                        print('Message button pressed');
+                        // Navigate to the Messages page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Messages(),
+                          ),
+                        );
                       },
                       child: Text('Message'),
                       style: ElevatedButton.styleFrom(
