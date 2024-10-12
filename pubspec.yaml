@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+    
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
@@ -39,6 +39,14 @@ dependencies:
   # geolocator: ^8.2.0
   shared_preferences: ^2.0.11
   google_maps_flutter: ^2.9.0
+  url_launcher: ^6.1.10
+  flutter_rating_bar: ^4.0.0
+  image_picker: ^1.1.2
+  firebase_storage: 12.3.2
+  font_awesome_flutter: ^10.2.0
+  flutter_svg: ^1.0.0
+  http: ^1.2.2
+  file_picker: ^8.1.2
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +74,20 @@ flutter:
     - assets/images/
     - assets/images/logo_onboarding.png
     - assets/images/logo.png
+    - assets/images/tour1.jpg
+    - assets/images/tour2.jpg
+    - assets/images/planting.jpg
+    - assets/images/cycling.jpg
+    - assets/images/publicTransport.jpg
+    - assets/images/walking.jpg
+    - assets/images/Carpooling.svg
+    - assets/images/CarSharing.svg
+    - assets/images/ElectricScooter.svg
+    - assets/images/HybridVehicles.svg
+    - assets/images/PublicTransport.svg
+    - assets/images/Telecommuting.svg
+    - assets/images/Walking.svg
+
 
   #   - images/a_dot_ham.jpeg
 

@@ -1,4 +1,10 @@
+import 'dart:io';
+import 'dart:typed_data'; // Import this for Uint8List
+
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart'; // Import for kIsWeb
 import 'package:flutter/material.dart';
 
 class VolunteerApplicationPage extends StatefulWidget {
@@ -11,11 +17,13 @@ class VolunteerApplicationPage extends StatefulWidget {
 
 class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
   final database = FirebaseDatabase.instance.ref();
+  PlatformFile? pickedFile;
+  UploadTask? uploadTask;
 
   final _formKey = GlobalKey<FormState>();
   String name = '';
-  String age = ''; // New field for age
-  DateTime? birthday; // New field for birthday
+  String age = '';
+  DateTime? birthday;
   String email = '';
   String phoneNumber = '';
   String country = '';
@@ -37,6 +45,60 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
     }
   }
 
+  void selectFile() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result == null) {
+      return;
+    }
+    setState(() {
+      pickedFile = result.files.first;
+    });
+  }
+
+  Future<void> uploadFile() async {
+    if (pickedFile == null) return;
+
+    String path = 'files/${pickedFile!.name}'; // Path in Firebase Storage
+    Uint8List? fileBytes; // For web platform
+    File? file; // For mobile/desktop platforms
+
+    // Check if we're on the web
+    if (kIsWeb) {
+      // Access file bytes instead of path for web
+      fileBytes = pickedFile!.bytes;
+    } else {
+      // Access path for mobile and desktop
+      file = File(pickedFile!.path!);
+    }
+
+    // Create a reference to Firebase Storage
+    final storageRef = FirebaseStorage.instance.ref().child(path);
+
+    if (kIsWeb) {
+      // Upload file bytes for web
+      setState(() {
+        uploadTask = storageRef.putData(fileBytes!);
+      });
+    } else {
+      // Upload file for mobile and desktop
+      setState(() {
+        uploadTask = storageRef.putFile(file!);
+      });
+    }
+
+    // Handle file upload completion
+    final snapshot = await uploadTask!.whenComplete(() {});
+
+    // Get the download URL of the uploaded file
+    final urlDownload = await snapshot.ref.getDownloadURL();
+    print('Download Link: $urlDownload');
+
+    setState(() {
+      uploadTask = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final volunteerRef = database.child('volunteers');
@@ -53,6 +115,36 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                pickedFile != null
+                    ? CircleAvatar(
+                        radius: 64,
+                        backgroundColor: Colors.blue[100],
+                        backgroundImage: kIsWeb
+                            ? MemoryImage(pickedFile!.bytes!)
+                            : FileImage(File(pickedFile!.path!)),
+                      )
+                    : const CircleAvatar(
+                        radius: 64,
+                        backgroundColor: Colors.blue,
+                        backgroundImage:
+                            AssetImage('assets/images/avatarImg.jpg'),
+                      ),
+      
+                Positioned(
+                  bottom: -10,
+                  left: 80,
+                  child: IconButton(
+                    onPressed: selectFile,
+                    icon: const Icon(Icons.add_a_photo),
+                  ),
+                ),
+
+                const SizedBox(height: 32),
+                ElevatedButton(
+                  child: const Text('Upload File'),
+                  onPressed: uploadFile,
+                ),
+                const SizedBox(height: 32),
                 const Text('Name',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 TextFormField(
@@ -61,19 +153,16 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   onChanged: (value) => setState(() => name = value),
                 ),
                 const SizedBox(height: 16),
-
                 const Text('Age',
-                    style: TextStyle(fontWeight: FontWeight.bold)), // Age field
+                    style: TextStyle(fontWeight: FontWeight.bold)),
                 TextFormField(
                   decoration: const InputDecoration(hintText: 'Enter your age'),
                   keyboardType: TextInputType.number,
                   onChanged: (value) => setState(() => age = value),
                 ),
                 const SizedBox(height: 16),
-
                 const Text('Birthday',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold)), // Birthday field
+                    style: TextStyle(fontWeight: FontWeight.bold)),
                 Row(
                   children: [
                     Expanded(
@@ -94,7 +183,6 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   ],
                 ),
                 const SizedBox(height: 16),
-
                 const Text('Email',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 TextFormField(
@@ -104,7 +192,6 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   onChanged: (value) => setState(() => email = value),
                 ),
                 const SizedBox(height: 16),
-
                 const Text('Phone Number',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 TextFormField(
@@ -114,7 +201,6 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   onChanged: (value) => setState(() => phoneNumber = value),
                 ),
                 const SizedBox(height: 16),
-
                 const Text('Country of Residence',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 TextFormField(
@@ -123,7 +209,6 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   onChanged: (value) => setState(() => country = value),
                 ),
                 const SizedBox(height: 16),
-
                 const Text('Previous Volunteer Experience',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Row(
@@ -140,7 +225,6 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   ],
                 ),
                 const SizedBox(height: 16),
-
                 const Text('Availability',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 DropdownButton<String>(
@@ -154,7 +238,6 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   onChanged: (value) => setState(() => availability = value!),
                 ),
                 const SizedBox(height: 16),
-
                 const Text('Skills',
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 TextFormField(
@@ -163,10 +246,10 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                   onChanged: (value) => setState(() => skills = value),
                 ),
                 const SizedBox(height: 24),
-
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
+                    // In the submit button's onPressed method:
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         // Construct a map of the volunteer details
@@ -191,8 +274,10 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                                 content:
                                     Text('Application Submitted Successfully')),
                           );
-                          // Optionally reset the form
+
+                          // Clear the image selection
                           setState(() {
+                            pickedFile = null; // Clear the picked file
                             _formKey.currentState!.reset();
                             birthday = null; // Reset birthday
                             hasVolunteeredBefore = false;
@@ -207,14 +292,12 @@ class _VolunteerApplicationPageState extends State<VolunteerApplicationPage> {
                         });
                       }
                     },
+
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal,
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
-                    child: const Text(
-                      'Submit Application',
-                      style: TextStyle(fontSize: 18),
-                    ),
+                    child: const Text('Submit Application'),
                   ),
                 ),
               ],

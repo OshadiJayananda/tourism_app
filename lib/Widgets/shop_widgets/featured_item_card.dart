@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../Pages/shop_details_page.dart';
+import '../../Pages/StoresPages/shop_details_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart'; // Import for LatLng
 
 class FeaturedItemCard extends StatelessWidget {

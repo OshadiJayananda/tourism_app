@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tourism_app/Pages/blood_donation_page.dart';
-import 'package:tourism_app/Pages/other_areas_page.dart';
+import 'package:tourism_app/Pages/VolunteerPages/add_opportunity_page.dart';
+import 'package:tourism_app/Pages/VolunteerPages/blood_donation_page.dart';
+import 'package:tourism_app/Pages/VolunteerPages/other_areas_page.dart';
 import '../widgets/volunteer_category.dart';
 import '../widgets/review_card.dart'; // Import the ReviewCard widget
-import 'volunteer_application_page.dart';
-import 'beach_volunteering_page.dart'; // Import the BeachVolunteeringPage
+import 'VolunteerPages/volunteer_application_page.dart';
+import 'VolunteerPages/beach_volunteering_page.dart'; // Import the BeachVolunteeringPage
 
 class VolunteerPage extends StatefulWidget {
   const VolunteerPage({super.key});
